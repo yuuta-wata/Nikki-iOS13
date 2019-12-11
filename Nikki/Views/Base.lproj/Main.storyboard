@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,6 +23,7 @@
                                     <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="3n7-pf-uqV">
                                         <connections>
                                             <action selector="addButtonPressed:" destination="JfI-tk-4Ei" id="4vK-Hh-iWy"/>
+                                            <segue destination="nyt-EM-5ht" kind="presentation" id="wEi-Rl-h3d"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -48,6 +50,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07T-8U-V2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1235" y="376"/>
+        </scene>
+        <!--Create View Controller-->
+        <scene sceneID="Xcj-yv-Wpc">
+            <objects>
+                <viewController id="nyt-EM-5ht" customClass="CreateViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJs-Ka-04E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHS-nf-4Oi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="2YQ-jc-CcT">
+                                        <barButtonItem key="leftBarButtonItem" title="←戻る" id="GNq-DY-g1A">
+                                            <connections>
+                                                <action selector="returnButtonPressed:" destination="nyt-EM-5ht" id="5C2-M6-AL3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2Pb-kv-kXf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QS4-fi-yii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2131" y="378"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hnR-eY-MrX">
