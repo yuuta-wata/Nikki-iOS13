@@ -15,9 +15,11 @@
 		43E5051723A190ED002050E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E5051523A190ED002050E8 /* LaunchScreen.storyboard */; };
 		43E5052223A19269002050E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5052123A19269002050E8 /* Constants.swift */; };
 		43E5052423A1AB9B002050E8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5052323A1AB9B002050E8 /* CreateViewController.swift */; };
+		4DB29B5021678AFDFA4906EC /* Pods_Nikki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nikki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5050723A190EC002050E8 /* Nikki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nikki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5050A23A190EC002050E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E5050C23A190EC002050E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		43E5051823A190ED002050E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43E5052123A19269002050E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43E5052323A1AB9B002050E8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = Nikki/Controllers/CreateViewController.swift; sourceTree = SOURCE_ROOT; };
+		7C37CB65152BED832F99C04C /* Pods-Nikki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nikki.debug.xcconfig"; path = "Target Support Files/Pods-Nikki/Pods-Nikki.debug.xcconfig"; sourceTree = "<group>"; };
+		DEA6DB06F232C5222A327F50 /* Pods-Nikki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nikki.release.xcconfig"; path = "Target Support Files/Pods-Nikki/Pods-Nikki.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB29B5021678AFDFA4906EC /* Pods_Nikki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				43E5050923A190EC002050E8 /* Nikki */,
 				43E5050823A190EC002050E8 /* Products */,
+				B397D21813C56F6D59807B19 /* Pods */,
+				85AD9632602768276E61570E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +104,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		85AD9632602768276E61570E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B397D21813C56F6D59807B19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C37CB65152BED832F99C04C /* Pods-Nikki.debug.xcconfig */,
+				DEA6DB06F232C5222A327F50 /* Pods-Nikki.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43E5051B23A190ED002050E8 /* Build configuration list for PBXNativeTarget "Nikki" */;
 			buildPhases = (
+				4CB4A34454D1711E59C8BF87 /* [CP] Check Pods Manifest.lock */,
 				43E5050323A190EC002050E8 /* Sources */,
 				43E5050423A190EC002050E8 /* Frameworks */,
 				43E5050523A190EC002050E8 /* Resources */,
+				D414261025E2C8F7DC7F1390 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +189,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CB4A34454D1711E59C8BF87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nikki-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D414261025E2C8F7DC7F1390 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nikki/Pods-Nikki-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nikki/Pods-Nikki-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nikki/Pods-Nikki-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		43E5050323A190EC002050E8 /* Sources */ = {
@@ -314,6 +383,7 @@
 		};
 		43E5051C23A190ED002050E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C37CB65152BED832F99C04C /* Pods-Nikki.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -332,6 +402,7 @@
 		};
 		43E5051D23A190ED002050E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEA6DB06F232C5222A327F50 /* Pods-Nikki.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
