@@ -67,7 +67,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="記事作成" id="2K9-r1-rBK">
-                                        <barButtonItem key="leftBarButtonItem" title="←戻る" id="X2F-6S-1Mt"/>
+                                        <barButtonItem key="leftBarButtonItem" title="←戻る" id="X2F-6S-1Mt">
+                                            <connections>
+                                                <action selector="returnButtonPressed:" destination="nyt-EM-5ht" id="eW5-ME-D2q"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="投稿" id="pLc-h1-mEA">
                                             <connections>
                                                 <action selector="postButtonPressed:" destination="nyt-EM-5ht" id="oNg-DJ-J6D"/>
@@ -126,6 +130,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Pb-kv-kXf"/>
                     </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="QQ6-MH-3Sc" id="HKq-AS-KKo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QS4-fi-yii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

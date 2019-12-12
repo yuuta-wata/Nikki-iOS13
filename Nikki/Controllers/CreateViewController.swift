@@ -9,13 +9,18 @@
 import UIKit
 
 class CreateViewController: UIViewController {
-
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
+    // MARK: - Add New Items
+    // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    // 戻るボタン
+    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 }
