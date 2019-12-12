@@ -16,7 +16,4 @@ class CreateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
 }
