@@ -40,10 +40,4 @@ class HomeViewController: UITableViewController {
         // 選択したセルにアニメーションをつける
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    // MARK: - Add New Items
-
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-    }
-    
 }

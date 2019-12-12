@@ -25,7 +25,6 @@
                                 <navigationItem title="ホーム" id="RpP-9E-ZYr">
                                     <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="3n7-pf-uqV">
                                         <connections>
-                                            <action selector="addButtonPressed:" destination="JfI-tk-4Ei" id="4vK-Hh-iWy"/>
                                             <segue destination="nyt-EM-5ht" kind="presentation" id="wEi-Rl-h3d"/>
                                         </connections>
                                     </barButtonItem>
