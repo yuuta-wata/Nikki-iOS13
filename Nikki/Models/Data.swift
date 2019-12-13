@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  Data.swift
 //  Nikki
 //
 //  Created by 渡辺雄太 on 2019/12/13.
@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
-class Category: Object {
-    @objc dynamic var title: String = ""
+// Realmモデルを定義
+class Data: Object {
+    dynamic var title: String = ""
+    dynamic var content: String = ""
 }

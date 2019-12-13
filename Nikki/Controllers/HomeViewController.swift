@@ -7,28 +7,34 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UITableViewController {
-    
-    var itemArray = ["テスト"]
+    let realm = try! Realm()
+    var categories: Results<Category>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    // viewが画面に表示されてから呼ばれるメソッド
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 画面が表示される度にロードする
+        loadCategories()
     }
     
     // MARK: - TableView Datasource Methods
     // セルを表示する行数を取得
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        // categoriesにデータがなければセルを１表示する
+        return categories?.count ?? 1
     }
     // セルを作成
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを作成
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
-        // 配列から値を取得
-        let item = itemArray[indexPath.row]
-        //　セルに値を表示する
-        cell.textLabel?.text = item
+        // catedoriesにデータがなければNo Titleをセルテキストに代入
+        cell.textLabel?.text = categories?[indexPath.row].title ?? "No Title"
         
         return cell
     }
@@ -38,5 +44,14 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 選択したセルにアニメーションをつける
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - Data Manipulation Methods
+    // ロードメソッド
+    func loadCategories() {
+        // Realmからデータをロード
+        categories = realm.objects(Category.self)
+        // テーブルビューをロード
+        tableView.reloadData()
     }
 }
