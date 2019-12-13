@@ -8,7 +8,9 @@
 
 import Foundation
 import RealmSwift
-
+// 記事データ
 class Article: Object {
-    dynamic var content: String = ""
+    @objc dynamic var content: String = ""
+    // 親を指定
+    var parentCategory = LinkingObjects(fromType: Category.self, property: "articles")
 }

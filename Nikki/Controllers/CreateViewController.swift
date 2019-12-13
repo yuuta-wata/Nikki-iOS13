@@ -39,7 +39,7 @@ class CreateViewController: UIViewController {
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
         let newCategory = Category()
-        // titleTextFieldに値がなければNo Titleを保存する
+        // titleTextFieldに値がなければ"No Title"を保存する
         newCategory.title = titleTextField.text ?? "No Title"
         save(category: newCategory)
         print("投稿完了")

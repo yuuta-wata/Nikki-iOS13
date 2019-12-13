@@ -8,7 +8,9 @@
 
 import Foundation
 import RealmSwift
-
+// ホームで表示する記事データ
 class Category: Object {
     @objc dynamic var title: String = ""
+    // 子を指定
+    let articles = List<Article>()
 }

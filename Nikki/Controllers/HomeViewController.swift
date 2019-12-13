@@ -10,7 +10,9 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UITableViewController {
+    // Realmを取得
     let realm = try! Realm()
+    // Categoryデータ型を宣言
     var categories: Results<Category>?
 
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを作成
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
-        // catedoriesにデータがなければNo Titleをセルテキストに代入
+        // catedoriesにデータがなければ"No Title"をセルテキストに代入
         cell.textLabel?.text = categories?[indexPath.row].title ?? "No Title"
         
         return cell
