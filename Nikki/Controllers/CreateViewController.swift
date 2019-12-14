@@ -14,6 +14,7 @@ class CreateViewController: UIViewController {
     let realm = try! Realm()
     
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +40,24 @@ class CreateViewController: UIViewController {
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
         let newCategory = Category()
-        // titleTextFieldに値がなければ"No Title"を保存する
-        newCategory.title = titleTextField.text ?? "No Title"
+        // indexデータにタイトルを格納
+        newCategory.index = titleTextField.text ?? "No Title"
+        do {
+            try realm.write {
+                // Categoryの子データであるArticleにタイトルとコンテンツを格納
+                let article = Article()
+                let newArticles = newCategory.articles
+                // titleTextFieldに値がなければ"No Title"を保存する
+                article.title = titleTextField.text ?? "No Title"
+                // contentTextFieldに値がなければ"No Content"を保存する
+                article.content = contentTextField.text ?? "No Content"
+                
+                newArticles.append(article)
+            }
+        } catch {
+            print("エラー\(error)")
+        }
+        // 保存
         save(category: newCategory)
         print("投稿完了")
     }

@@ -39,6 +39,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="CRR-6R-PKR" kind="show" identifier="goToArticle" id="gCO-Lj-NY8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -47,9 +50,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="kxb-Hn-zvx"/>
-                    <connections>
-                        <segue destination="CRR-6R-PKR" kind="show" identifier="goToArticle" id="lLF-bj-1Sk"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07T-8U-V2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +101,10 @@
                         <viewLayoutGuide key="safeArea" id="8nL-HA-mBe"/>
                     </view>
                     <navigationItem key="navigationItem" id="UER-mA-e4L"/>
+                    <connections>
+                        <outlet property="diaryContent" destination="RAl-pJ-jgf" id="q51-Pz-prQ"/>
+                        <outlet property="diaryTitle" destination="jcw-q3-IWL" id="fmQ-kz-SeP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIt-rS-cbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,6 +190,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="E19-GR-KgU"/>
                     <connections>
+                        <outlet property="contentTextField" destination="clf-kH-o0o" id="eLx-5k-O8s"/>
                         <outlet property="titleTextField" destination="QQ6-MH-3Sc" id="HKq-AS-KKo"/>
                     </connections>
                 </viewController>
