@@ -33,10 +33,10 @@ class HomeViewController: UITableViewController {
     }
     // セルを作成
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 再利用するセルを作成
+        // 再利用するセルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
         // catedoriesにデータがなければ"No Title"をセルテキストに代入
-        cell.textLabel?.text = categories?[indexPath.row].title ?? "No Title"
+        cell.textLabel?.text = categories?[indexPath.row].index ?? "No Title"
         
         return cell
     }
@@ -46,6 +46,19 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 選択したセルにアニメーションをつける
         tableView.deselectRow(at: indexPath, animated: true)
+        // 選択したセルに指定した識別子でセグエを開始する
+        performSegue(withIdentifier: K.categoryCell, sender: self)
+        
+    }
+    // セグエ実行中の処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 遷移先がArticleViewControllerなら選択しているCategoryデータをselectedCategoryに渡す
+        if let vc = segue.destination as? ArticleViewController {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                vc.selectedCategory = categories?[indexPath.row]
+            }
+        }
+        
     }
     
     // MARK: - Data Manipulation Methods
