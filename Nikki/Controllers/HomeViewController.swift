@@ -41,26 +41,6 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - TbaleView Delegate Methods
-    // セルが選択されていることを通知する
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 選択したセルにアニメーションをつける
-        tableView.deselectRow(at: indexPath, animated: true)
-        // 選択したセルに指定した識別子でセグエを開始する
-        performSegue(withIdentifier: K.categoryCell, sender: self)
-        
-    }
-    // セグエ実行中の処理
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 遷移先がArticleViewControllerなら選択しているCategoryデータをselectedCategoryに渡す
-        if let vc = segue.destination as? ArticleViewController {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                vc.selectedCategory = categories?[indexPath.row]
-            }
-        }
-        
-    }
-    
     // MARK: - Data Manipulation Methods
     // ロードメソッド
     func loadCategories() {
@@ -68,5 +48,25 @@ class HomeViewController: UITableViewController {
         categories = realm.objects(Category.self)
         // テーブルビューをロード
         tableView.reloadData()
+    }
+    
+    // MARK: - TbaleView Delegate Methods
+    // セルが選択されていることを通知する
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 選択したセルに指定した識別子でセグエを開始する
+        performSegue(withIdentifier: K.categoryCell, sender: self)
+        
+    }
+    // セグエ実行中の処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("実行中")
+        // 遷移先がArticleViewControllerなら選択しているCategoryデータをselectedCategoryに渡す
+        if let vc = segue.destination as? ArticleViewController {
+            print("成功1")
+            if let indexPath = tableView.indexPathForSelectedRow {
+                print("成功2")
+                vc.selectedCategory = categories?[indexPath.row]
+            }
+        }
     }
 }

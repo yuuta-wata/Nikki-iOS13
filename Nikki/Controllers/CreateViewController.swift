@@ -44,9 +44,9 @@ class CreateViewController: UIViewController {
         newCategory.index = titleTextField.text ?? "No Title"
         do {
             try realm.write {
+                let newArticles = newCategory.articles
                 // Categoryの子データであるArticleにタイトルとコンテンツを格納
                 let article = Article()
-                let newArticles = newCategory.articles
                 // titleTextFieldに値がなければ"No Title"を保存する
                 article.title = titleTextField.text ?? "No Title"
                 // contentTextFieldに値がなければ"No Content"を保存する
@@ -59,6 +59,7 @@ class CreateViewController: UIViewController {
         }
         // 保存
         save(category: newCategory)
+        dismiss(animated: true, completion: nil)
         print("投稿完了")
     }
 
