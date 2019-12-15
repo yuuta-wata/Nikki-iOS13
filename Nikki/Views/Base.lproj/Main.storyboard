@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaH-uZ-ZuO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaH-uZ-ZuO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                                 <navigationItem title="ホーム" id="RpP-9E-ZYr">
                                     <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="3n7-pf-uqV">
                                         <connections>
-                                            <segue destination="nyt-EM-5ht" kind="presentation" id="wEi-Rl-h3d"/>
+                                            <segue destination="nyt-EM-5ht" kind="presentation" modalPresentationStyle="fullScreen" id="wEi-Rl-h3d"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -47,21 +47,83 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="kxb-Hn-zvx"/>
+                    <connections>
+                        <segue destination="CRR-6R-PKR" kind="presentation" identifier="goToArticle" modalPresentationStyle="fullScreen" id="o9A-r5-1c2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07T-8U-V2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1235" y="376"/>
+        </scene>
+        <!--Article View Controller-->
+        <scene sceneID="YeX-75-jBq">
+            <objects>
+                <viewController id="CRR-6R-PKR" customClass="ArticleViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X0J-Ya-VoA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="knA-4h-naQ">
+                                        <barButtonItem key="leftBarButtonItem" title="←戻る" id="9Ck-lZ-ZsP">
+                                            <connections>
+                                                <action selector="returnButtonPressed:" destination="CRR-6R-PKR" id="nP1-9q-hmh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcw-q3-IWL">
+                                <rect key="frame" x="20" y="108" width="374" height="34"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
+                                <rect key="frame" x="20" y="162" width="374" height="700"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="C4F-hm-ubh" firstAttribute="top" secondItem="8nL-HA-mBe" secondAttribute="top" id="3hF-K1-RVB"/>
+                            <constraint firstItem="jcw-q3-IWL" firstAttribute="top" secondItem="C4F-hm-ubh" secondAttribute="bottom" constant="20" id="Fr8-lr-4C9"/>
+                            <constraint firstItem="C4F-hm-ubh" firstAttribute="trailing" secondItem="8nL-HA-mBe" secondAttribute="trailing" id="Lnt-9p-M18"/>
+                            <constraint firstItem="8nL-HA-mBe" firstAttribute="trailing" secondItem="RAl-pJ-jgf" secondAttribute="trailing" constant="20" id="O9y-zQ-Dw9"/>
+                            <constraint firstItem="8nL-HA-mBe" firstAttribute="bottom" secondItem="RAl-pJ-jgf" secondAttribute="bottom" id="TSl-P0-Lcy"/>
+                            <constraint firstItem="8nL-HA-mBe" firstAttribute="trailing" secondItem="jcw-q3-IWL" secondAttribute="trailing" constant="20" id="Ye9-BZ-Eu3"/>
+                            <constraint firstItem="jcw-q3-IWL" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" constant="20" id="Yea-wS-wCZ"/>
+                            <constraint firstItem="C4F-hm-ubh" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" id="Z2N-7L-gok"/>
+                            <constraint firstItem="RAl-pJ-jgf" firstAttribute="top" secondItem="jcw-q3-IWL" secondAttribute="bottom" constant="20" id="hap-8B-h92"/>
+                            <constraint firstItem="RAl-pJ-jgf" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" constant="20" id="qQc-t8-eBl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8nL-HA-mBe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UER-mA-e4L"/>
+                    <connections>
+                        <outlet property="diaryContent" destination="RAl-pJ-jgf" id="q51-Pz-prQ"/>
+                        <outlet property="diaryTitle" destination="jcw-q3-IWL" id="fmQ-kz-SeP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIt-rS-cbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115.9420289855075" y="571.875"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="Xcj-yv-Wpc">
             <objects>
                 <viewController id="nyt-EM-5ht" customClass="CreateViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UJs-Ka-04E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y3-d5-uqJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
@@ -80,30 +142,29 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="題名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-5x-gou">
-                                <rect key="frame" x="20" y="84" width="394" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-5x-gou">
+                                <rect key="frame" x="20" y="116" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQ6-MH-3Sc">
-                                <rect key="frame" x="20" y="113" width="374" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQ6-MH-3Sc">
+                                <rect key="frame" x="20" y="145" width="374" height="34"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本文" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5h-cp-WXQ">
-                                <rect key="frame" x="20" y="155" width="394" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5h-cp-WXQ">
+                                <rect key="frame" x="20" y="187" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="clf-kH-o0o">
-                                <rect key="frame" x="20" y="184" width="374" height="624"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clf-kH-o0o">
+                                <rect key="frame" x="20" y="216" width="374" height="646"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -130,13 +191,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Pb-kv-kXf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="E19-GR-KgU"/>
                     <connections>
+                        <outlet property="contentTextField" destination="clf-kH-o0o" id="eLx-5k-O8s"/>
                         <outlet property="titleTextField" destination="QQ6-MH-3Sc" id="HKq-AS-KKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QS4-fi-yii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169.5652173913045" y="375.66964285714283"/>
+            <point key="canvasLocation" x="2116" y="-141"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hnR-eY-MrX">

@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    // Override point for customization after application launch.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // ファイルの場所
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        // Realmを初期化
+        do {
+            _ =  try Realm()
+        } catch {
+            print("Error initialising new realm, \(error)")
+        }
+        
         return true
     }
 
