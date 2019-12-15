@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
-class HomeViewController: UITableViewController {
+class HomeViewController: SwipeTableViewController {
     // Realmを取得
     let realm = try! Realm()
     // Categoryデータ型を宣言
@@ -18,8 +18,6 @@ class HomeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 行の縦幅
-        tableView.rowHeight = 80.0
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -37,11 +35,9 @@ class HomeViewController: UITableViewController {
     // セルを作成
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! SwipeTableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         // catedoriesにデータがなければ"No Title"をセルテキストに代入
         cell.textLabel?.text = categories?[indexPath.row].index ?? "No Title"
-        
-        cell.delegate = self
         
         return cell
     }
@@ -54,6 +50,19 @@ class HomeViewController: UITableViewController {
         // テーブルビューをロード
         tableView.reloadData()
     }
+    // スワイプで削除する
+    override func deleteModel(at indexPath: IndexPath) {
+        // 選択したセルにデータが入っていれば削除する
+        if let categoryForDeletion = self.categories?[indexPath.row] {
+            do {
+                try! self.realm.write {
+                    // 子データから削除する
+                    self.realm.delete(categoryForDeletion.articles)
+                    self.realm.delete(categoryForDeletion)
+                }
+            }
+        }
+    }
     
     // MARK: - TbaleView Delegate Methods
     // セルが選択されていることを通知する
@@ -64,50 +73,11 @@ class HomeViewController: UITableViewController {
     }
     // セグエ実行中の処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("実行中")
         // 遷移先がArticleViewControllerなら選択しているCategoryデータをselectedCategoryに渡す
         if let vc = segue.destination as? ArticleViewController {
-            print("成功1")
             if let indexPath = tableView.indexPathForSelectedRow {
-                print("成功2")
                 vc.selectedCategory = categories?[indexPath.row]
             }
         }
-    }
-}
-
-// MARK: - SwipeCell Delegate Methods
-
-extension HomeViewController: SwipeTableViewCellDelegate {
-    // TableViewをスワイプで削除するときのメソッド
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        // スワイプを右から指定
-        guard orientation == .right else { return nil }
-        
-        // 削除するときのアクション処理
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            print("delete")
-            // 選択したセルにデータが入っていれば削除する
-            if let categoryForDeletion = self.categories?[indexPath.row] {
-                do {
-                    try! self.realm.write {
-                        // 子データから削除する
-                        self.realm.delete(categoryForDeletion.articles)
-                        self.realm.delete(categoryForDeletion)
-                    }
-                }
-            }
-        }
-        // 削除アイコン
-        deleteAction.image = UIImage(named: "delete-icon")
-        
-        return [deleteAction]
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive
-        options.transitionStyle = .border
-        return options
     }
 }
