@@ -63,10 +63,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <items>
-                                    <navigationItem title="Title" id="knA-4h-naQ">
+                                    <navigationItem id="knA-4h-naQ">
                                         <barButtonItem key="leftBarButtonItem" title="←戻る" id="9Ck-lZ-ZsP">
                                             <connections>
                                                 <action selector="returnButtonPressed:" destination="CRR-6R-PKR" id="nP1-9q-hmh"/>
@@ -76,31 +76,41 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcw-q3-IWL">
-                                <rect key="frame" x="20" y="108" width="374" height="34"/>
+                                <rect key="frame" x="20" y="160" width="374" height="34"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
-                                <rect key="frame" x="20" y="162" width="374" height="700"/>
+                                <rect key="frame" x="20" y="214" width="374" height="648"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-a5-sbm">
+                                <rect key="frame" x="20" y="89" width="374" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="C4F-hm-ubh" firstAttribute="top" secondItem="8nL-HA-mBe" secondAttribute="top" id="3hF-K1-RVB"/>
+                            <constraint firstItem="jcw-q3-IWL" firstAttribute="top" secondItem="VpC-a5-sbm" secondAttribute="bottom" constant="20" id="Fda-IG-HKr"/>
                             <constraint firstItem="jcw-q3-IWL" firstAttribute="top" secondItem="C4F-hm-ubh" secondAttribute="bottom" constant="20" id="Fr8-lr-4C9"/>
                             <constraint firstItem="C4F-hm-ubh" firstAttribute="trailing" secondItem="8nL-HA-mBe" secondAttribute="trailing" id="Lnt-9p-M18"/>
                             <constraint firstItem="8nL-HA-mBe" firstAttribute="trailing" secondItem="RAl-pJ-jgf" secondAttribute="trailing" constant="20" id="O9y-zQ-Dw9"/>
                             <constraint firstItem="8nL-HA-mBe" firstAttribute="bottom" secondItem="RAl-pJ-jgf" secondAttribute="bottom" id="TSl-P0-Lcy"/>
+                            <constraint firstItem="8nL-HA-mBe" firstAttribute="trailing" secondItem="VpC-a5-sbm" secondAttribute="trailing" constant="20" id="UtX-Y7-8r9"/>
                             <constraint firstItem="8nL-HA-mBe" firstAttribute="trailing" secondItem="jcw-q3-IWL" secondAttribute="trailing" constant="20" id="Ye9-BZ-Eu3"/>
                             <constraint firstItem="jcw-q3-IWL" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" constant="20" id="Yea-wS-wCZ"/>
                             <constraint firstItem="C4F-hm-ubh" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" id="Z2N-7L-gok"/>
                             <constraint firstItem="RAl-pJ-jgf" firstAttribute="top" secondItem="jcw-q3-IWL" secondAttribute="bottom" constant="20" id="hap-8B-h92"/>
                             <constraint firstItem="RAl-pJ-jgf" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" constant="20" id="qQc-t8-eBl"/>
+                            <constraint firstItem="VpC-a5-sbm" firstAttribute="leading" secondItem="8nL-HA-mBe" secondAttribute="leading" constant="20" id="qZD-Pu-58E"/>
+                            <constraint firstItem="VpC-a5-sbm" firstAttribute="top" secondItem="8nL-HA-mBe" secondAttribute="top" constant="45" id="xz2-Ff-zYL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8nL-HA-mBe"/>
                     </view>
@@ -122,13 +132,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y3-d5-uqJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y3-d5-uqJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="記事作成" id="2K9-r1-rBK">
+                                    <navigationItem id="2K9-r1-rBK">
                                         <barButtonItem key="leftBarButtonItem" title="←戻る" id="X2F-6S-1Mt">
                                             <connections>
                                                 <action selector="returnButtonPressed:" destination="nyt-EM-5ht" id="eW5-ME-D2q"/>
@@ -143,39 +153,49 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-5x-gou">
-                                <rect key="frame" x="20" y="116" width="394" height="21"/>
+                                <rect key="frame" x="20" y="176.5" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQ6-MH-3Sc">
-                                <rect key="frame" x="20" y="145" width="374" height="34"/>
+                                <rect key="frame" x="20" y="205.5" width="374" height="34"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5h-cp-WXQ">
-                                <rect key="frame" x="20" y="187" width="394" height="21"/>
+                                <rect key="frame" x="20" y="247.5" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clf-kH-o0o">
-                                <rect key="frame" x="20" y="216" width="374" height="646"/>
+                                <rect key="frame" x="20" y="276.5" width="374" height="585.5"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iox-fB-Vda">
+                                <rect key="frame" x="20" y="89" width="374" height="59.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gDc-5x-gou" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" constant="20" id="1fM-oJ-xiq"/>
                             <constraint firstItem="clf-kH-o0o" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" constant="20" id="1qn-UM-HIW"/>
+                            <constraint firstItem="iox-fB-Vda" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" constant="20" id="FfT-pr-L1L"/>
                             <constraint firstItem="QQ6-MH-3Sc" firstAttribute="top" secondItem="gDc-5x-gou" secondAttribute="bottom" constant="8" id="Jl5-BT-M8d"/>
                             <constraint firstItem="2Pb-kv-kXf" firstAttribute="trailing" secondItem="gDc-5x-gou" secondAttribute="trailing" id="NjD-Mb-vcK"/>
                             <constraint firstItem="clf-kH-o0o" firstAttribute="bottom" secondItem="2Pb-kv-kXf" secondAttribute="bottom" id="Pth-CC-ZPY"/>
+                            <constraint firstItem="gDc-5x-gou" firstAttribute="top" secondItem="iox-fB-Vda" secondAttribute="bottom" constant="28" id="QHL-OI-C14"/>
                             <constraint firstItem="q5h-cp-WXQ" firstAttribute="top" secondItem="QQ6-MH-3Sc" secondAttribute="bottom" constant="8" id="QfE-ag-m90"/>
+                            <constraint firstItem="iox-fB-Vda" firstAttribute="top" secondItem="2Pb-kv-kXf" secondAttribute="top" constant="45" id="TZA-kl-Pv2"/>
+                            <constraint firstItem="2Pb-kv-kXf" firstAttribute="trailing" secondItem="iox-fB-Vda" secondAttribute="trailing" constant="20" id="XDE-E6-Nbp"/>
                             <constraint firstItem="2Pb-kv-kXf" firstAttribute="trailing" secondItem="1Y3-d5-uqJ" secondAttribute="trailing" id="XPb-J5-47k"/>
                             <constraint firstItem="2Pb-kv-kXf" firstAttribute="trailing" secondItem="QQ6-MH-3Sc" secondAttribute="trailing" constant="20" id="geU-uO-Khm"/>
                             <constraint firstItem="1Y3-d5-uqJ" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" id="isl-OX-cn7"/>

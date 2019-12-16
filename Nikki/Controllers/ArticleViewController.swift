@@ -18,7 +18,11 @@ class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // TextFieldが選択されたら通知
+        diaryTitle.delegate = self
+        // TextViewが選択されたら通知
+        diaryContent.delegate = self
+        // ロード
         loadArticle()
     }
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
@@ -28,5 +32,22 @@ class ArticleViewController: UIViewController {
     func loadArticle() {
         diaryTitle.text = selectedCategory?.articles.first?.title
         diaryContent.text = selectedCategory?.articles.first?.content
+    }
+}
+
+// MARK: - TextField Delegate Methods
+extension ArticleViewController: UITextFieldDelegate {
+    // ユーザーに編集をさせない
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+        return false
+    }
+}
+// MARK: - TextView Delegate Methods
+extension ArticleViewController: UITextViewDelegate {
+    // ユーザーに編集をさせない
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+//        textView.resignFirstResponder()
+        return false
     }
 }
