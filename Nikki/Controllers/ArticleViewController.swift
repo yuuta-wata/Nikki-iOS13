@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class ArticleViewController: UIViewController {
+    let realm = try! Realm()
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
     var selectedCategory: Category?
     
@@ -43,7 +44,16 @@ class ArticleViewController: UIViewController {
             diaryContent.resignFirstResponder()
             texts = false
             sender.title = "編集"
-            // 記事をアップロードする処理を書く
+            // 記事をアップデートする
+            do {
+                try realm.write {
+                    selectedCategory?.index = diaryTitle.text ?? "No Title"
+                    selectedCategory?.articles.first?.title = diaryTitle.text ?? "No Title"
+                    selectedCategory?.articles.first?.content = diaryContent.text ?? "No Content"
+                }
+            } catch {
+                print("エラー\(error)")
+            }
             
         }
     }
@@ -56,14 +66,14 @@ class ArticleViewController: UIViewController {
 
 // MARK: - TextField Delegate Methods
 extension ArticleViewController: UITextFieldDelegate {
-    // ユーザーにタイトルの編集をさせない
+    // 初期状態ではユーザーにタイトルの編集をさせない
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return texts
     }
 }
 // MARK: - TextView Delegate Methods
 extension ArticleViewController: UITextViewDelegate {
-    // ユーザーにコンテンツの編集をさせない
+    // 初期状態ではユーザーにコンテンツの編集をさせない
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         return texts
     }
