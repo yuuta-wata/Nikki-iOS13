@@ -72,6 +72,11 @@
                                                 <action selector="returnButtonPressed:" destination="CRR-6R-PKR" id="nP1-9q-hmh"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="編集" id="56z-dK-E2D">
+                                            <connections>
+                                                <action selector="editingButtonPressed:" destination="CRR-6R-PKR" id="swP-M3-guN"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

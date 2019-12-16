@@ -13,6 +13,8 @@ class ArticleViewController: UIViewController {
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
     var selectedCategory: Category?
     
+    var texts = false
+    
     @IBOutlet weak var diaryTitle: UITextField!
     @IBOutlet weak var diaryContent: UITextView!
     
@@ -25,8 +27,25 @@ class ArticleViewController: UIViewController {
         // ロード
         loadArticle()
     }
+    // 戻るボタン
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    // 編集ボタン
+    @IBAction func editingButtonPressed(_ sender: UIBarButtonItem) {
+        // 記事の編集
+        if texts == false {
+            texts = true
+            sender.title = "完了"
+        } else {
+            // キーボードを下げる
+            diaryTitle.resignFirstResponder()
+            diaryContent.resignFirstResponder()
+            texts = false
+            sender.title = "編集"
+            // 記事をアップロードする処理を書く
+            
+        }
     }
     // 受け取ったデータからリストを取得し、textに表示させる
     func loadArticle() {
@@ -37,17 +56,15 @@ class ArticleViewController: UIViewController {
 
 // MARK: - TextField Delegate Methods
 extension ArticleViewController: UITextFieldDelegate {
-    // ユーザーに編集をさせない
+    // ユーザーにタイトルの編集をさせない
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-        return false
+        return texts
     }
 }
 // MARK: - TextView Delegate Methods
 extension ArticleViewController: UITextViewDelegate {
-    // ユーザーに編集をさせない
+    // ユーザーにコンテンツの編集をさせない
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-//        textView.resignFirstResponder()
-        return false
+        return texts
     }
 }
