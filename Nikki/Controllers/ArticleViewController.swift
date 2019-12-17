@@ -18,7 +18,8 @@ class ArticleViewController: ManagementKeyboardViewController {
     
     @IBOutlet weak var diaryTitle: UITextField!
     @IBOutlet weak var diaryContent: UITextView!
-    
+    // diaryContentの底側の制約を取得
+    @IBOutlet weak var diaryContentBottomConstraints: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         // TextFieldが選択されたら通知
@@ -28,6 +29,30 @@ class ArticleViewController: ManagementKeyboardViewController {
         // ロード
         loadArticle()
     }
+    
+    // 画面を表示させる前に呼ばせる
+    override func keyboardWillAppear(_ notification: Notification) {
+        // キーボードのサイズを取得
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        // キーボードの高さを求めるための型定義
+        let keyboardHeight: CGFloat
+        // iOS13以上ならキーボードの高さを差し引いたTextViewを表示する
+        if #available(iOS 13.0, *) {
+            keyboardHeight = self.view.safeAreaInsets.bottom - keyboardFrame.cgRectValue.height
+        } else {
+            keyboardHeight = keyboardFrame.cgRectValue.height
+        }
+        diaryContentBottomConstraints.constant = keyboardHeight
+    }
+    // 画面を閉じる前に呼ばせる
+    override func keyboardWillDisappear(_ notification: NSNotification?) {
+        // diaryContentの高さを元に戻す
+        diaryContentBottomConstraints.constant = 0.0
+    }
+    
+    
     // 戻るボタン
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)

@@ -14,9 +14,9 @@ class CreateViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentTextField: UITextView!
+    @IBOutlet weak var contentTextView: UITextView!
     // contentTextFieldの底側の制約を取得
-    @IBOutlet weak var contentTextFieldBottomConstraints: NSLayoutConstraint!
+    @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,12 @@ class CreateViewController: ManagementKeyboardViewController {
         } else {
             keyboardHeight = keyboardFrame.cgRectValue.height
         }
-        contentTextFieldBottomConstraints.constant = keyboardHeight
+        contentTextViewBottomConstraints.constant = keyboardHeight
     }
     // 画面を閉じる前に呼ばせる
     override func keyboardWillDisappear(_ notification: NSNotification?) {
         // contentTextFieldの高さを元に戻す
-        contentTextFieldBottomConstraints.constant = 0.0
+        contentTextViewBottomConstraints.constant = 0.0
     }
     
     
@@ -75,7 +75,7 @@ class CreateViewController: ManagementKeyboardViewController {
                 // titleTextFieldに値がなければ"No Title"を保存する
                 article.title = titleTextField.text ?? "No Title"
                 // contentTextFieldに値がなければ"No Content"を保存する
-                article.content = contentTextField.text ?? "No Content"
+                article.content = contentTextView.text ?? "No Content"
                 
                 newArticles.append(article)
             }
