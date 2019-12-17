@@ -9,6 +9,6 @@
 import Foundation
 
 struct K {
-    static let cellIdentifier = "ItemCell"
+    static let cellIdentifier = "Cell"
     static let categoryCell = "goToArticle"
 }
