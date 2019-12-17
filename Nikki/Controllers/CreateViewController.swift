@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CreateViewController: UIViewController {
+class CreateViewController: KeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
     
@@ -18,7 +18,6 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleTextField.delegate = self
     }
     // 戻るボタン
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
@@ -64,15 +63,4 @@ class CreateViewController: UIViewController {
         print("投稿完了")
     }
 
-}
-
-extension CreateViewController: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.resignFirstResponder()
-//    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
-    }
 }
