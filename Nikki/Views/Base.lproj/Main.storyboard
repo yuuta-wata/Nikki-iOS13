@@ -219,6 +219,7 @@
                     <navigationItem key="navigationItem" id="E19-GR-KgU"/>
                     <connections>
                         <outlet property="contentTextField" destination="clf-kH-o0o" id="eLx-5k-O8s"/>
+                        <outlet property="contentTextFieldBottomConstraints" destination="Pth-CC-ZPY" id="J7s-lG-uQm"/>
                         <outlet property="titleTextField" destination="QQ6-MH-3Sc" id="HKq-AS-KKo"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,38 @@ class ManagementKeyboardViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+
+    // Viewが表示される直前に呼ばれるメソッド
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // オブサーバーに追加する
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillAppear(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillDisappear(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    // viewが閉じられる直前に呼ばれるメソッド。
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // オブサーバーに登録したオブジェクトを削除する
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
+    }
+
+    @objc func keyboardWillAppear(_ notification: Notification) {
+        // CreateViewControllerでオーバーライドする
+    }
+    @objc func keyboardWillDisappear(_ notification: NSNotification?) {
+        // CreateViewControllerでオーバーライドする
+    }
+    
+// MARK: - UITapGesturRecognizer Methods
     // Viewに認証させる
     func setupView() {
         view.addGestureRecognizer(hideKeyboardViewTap())
