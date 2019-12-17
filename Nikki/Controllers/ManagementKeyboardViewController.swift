@@ -12,14 +12,14 @@ class ManagementKeyboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHideKeyboard()
+        setupView()
     }
     // Viewに認証させる
-    func setupHideKeyboard() {
-        view.addGestureRecognizer(hideKeyboard())
+    func setupView() {
+        view.addGestureRecognizer(hideKeyboardViewTap())
     }
-    // タップするとレスポンダーを破棄する
-    func hideKeyboard() -> UITapGestureRecognizer {
+    // 画面をタップするとレスポンダーを破棄する
+    func hideKeyboardViewTap() -> UITapGestureRecognizer {
         let tap = UITapGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
         // タップがキャンセルされないようにする
         tap.cancelsTouchesInView = false
