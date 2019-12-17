@@ -39,9 +39,6 @@ class ArticleViewController: KeyboardViewController {
             texts = true
             sender.title = "完了"
         } else {
-            // キーボードを下げる
-            diaryTitle.resignFirstResponder()
-            diaryContent.resignFirstResponder()
             texts = false
             sender.title = "編集"
             // 記事をアップデートする
