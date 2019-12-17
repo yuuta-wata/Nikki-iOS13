@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CreateViewController: KeyboardViewController {
+class CreateViewController: ManagementKeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
     

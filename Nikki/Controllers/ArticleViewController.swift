@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ArticleViewController: KeyboardViewController {
+class ArticleViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
     var selectedCategory: Category?
