@@ -12,15 +12,41 @@ import RealmSwift
 class CreateViewController: ManagementKeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
-    
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     // contentTextFieldの底側の制約を取得
     @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDate()
     }
+    
+    // 日付をロードする
+    func loadDate() {
+        // 日付フォーマットを初期化
+        let jpDateFormate = DateFormatter()
+        // 日付を日本表記にする
+        jpDateFormate.locale = Locale(identifier: "ja_JP")
+        // 日付の表示方法を指定
+        jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMMEEE jm")
+        // タイムゾーンに日本を設定
+        if let timeZone = TimeZone(identifier: "Asia/Tokyo") {
+            jpDateFormate.timeZone = timeZone
+            // 日付を表示
+            dateLabel.text = jpDateFormate.string(from: Date())
+        }
+    }
+    
+    // 戻るボタン
+    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: - TextView Size
     // 画面を表示させる前に呼ばせる
     override func keyboardWillAppear(_ notification: Notification) {
         // キーボードのサイズを取得
@@ -42,13 +68,7 @@ class CreateViewController: ManagementKeyboardViewController {
         // contentTextFieldの高さを元に戻す
         contentTextViewBottomConstraints.constant = 0.0
     }
-    
-    
-    // 戻るボタン
-    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     // MARK: - Data Manipulation Methods
     // セーブメソッド
     func save(category: Category) {

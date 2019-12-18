@@ -14,7 +14,7 @@ class ManagementKeyboardViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
-
+// MARK: - NSNotification Methods
     // Viewが表示される直前に呼ばれるメソッド
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
