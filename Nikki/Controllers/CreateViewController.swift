@@ -16,7 +16,6 @@ class CreateViewController: ManagementKeyboardViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     // contentTextFieldの底側の制約を取得
     @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
     
