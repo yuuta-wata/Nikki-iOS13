@@ -12,10 +12,10 @@ import RealmSwift
 class CreateViewController: ManagementKeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
-
+    
+    @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-    @IBOutlet weak var dateLabel: UILabel!
     // contentTextFieldの底側の制約を取得
     @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
     
@@ -36,7 +36,7 @@ class CreateViewController: ManagementKeyboardViewController {
         if let timeZone = TimeZone(identifier: "Asia/Tokyo") {
             jpDateFormate.timeZone = timeZone
             // 日付を表示
-            dateLabel.text = jpDateFormate.string(from: Date())
+            createViewNavItem.title = jpDateFormate.string(from: Date())
         }
     }
     

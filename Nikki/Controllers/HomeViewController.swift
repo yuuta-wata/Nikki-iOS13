@@ -16,6 +16,8 @@ class HomeViewController: SwipeTableViewController {
     // Categoryデータ型を宣言
     var categories: Results<Category>?
     
+    @IBOutlet weak var homeNavItem: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
