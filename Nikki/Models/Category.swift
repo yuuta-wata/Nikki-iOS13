@@ -11,6 +11,8 @@ import RealmSwift
 // ホームで表示する記事データ
 class Category: Object {
     @objc dynamic var index: String = ""
+    // 親を指定
+    var parentSection = LinkingObjects(fromType: Section.self, property: "categorys")
     // 子を指定
     let articles = List<Article>()
 }
