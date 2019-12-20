@@ -12,6 +12,10 @@ import RealmSwift
 class CreateViewController: ManagementKeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
+    var sectionDate = ""
+    var cellWeek = ""
+    var cellDay = ""
+    var cellTime = ""
     
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -30,13 +34,29 @@ class CreateViewController: ManagementKeyboardViewController {
         let jpDateFormate = DateFormatter()
         // 日付を日本表記にする
         jpDateFormate.locale = Locale(identifier: "ja_JP")
-        // 日付の表示方法を指定
-        jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMMEEE jm")
         // タイムゾーンに日本を設定
         if let timeZone = TimeZone(identifier: "Asia/Tokyo") {
+            // 日付の表示方法を指定
+            jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMMEEE jm")
             jpDateFormate.timeZone = timeZone
             // 日付を表示
             createViewNavItem.title = jpDateFormate.string(from: Date())
+            // section用の日付を取得
+            jpDateFormate.setLocalizedDateFormatFromTemplate("yMMMM")
+            sectionDate = jpDateFormate.string(from: Date())
+            print(sectionDate)
+            // cell用の曜日を取得
+            jpDateFormate.setLocalizedDateFormatFromTemplate("EEEEE")
+            cellWeek = jpDateFormate.string(from: Date())
+            print(cellWeek)
+            // cell用の日付を取得
+            jpDateFormate.setLocalizedDateFormatFromTemplate("dd")
+            cellDay = jpDateFormate.string(from: Date())
+            print(cellDay)
+            // cell用の時刻を取得
+            jpDateFormate.setLocalizedDateFormatFromTemplate("jm")
+            cellTime = jpDateFormate.string(from: Date())
+            print(cellTime)
         }
     }
     
@@ -44,7 +64,7 @@ class CreateViewController: ManagementKeyboardViewController {
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     // MARK: - TextView Size
     // 画面を表示させる前に呼ばせる
     override func keyboardWillAppear(_ notification: Notification) {
@@ -67,13 +87,13 @@ class CreateViewController: ManagementKeyboardViewController {
         // contentTextFieldの高さを元に戻す
         contentTextViewBottomConstraints.constant = 0.0
     }
-
+    
     // MARK: - Data Manipulation Methods
     // セーブメソッド
-    func save(category: Category) {
+    func save(section: Section) {
         do {
             try realm.write {
-                realm.add(category)
+                realm.add(section)
             }
         } catch {
             print("カテゴリ保存のエラー \(error)")
@@ -83,28 +103,35 @@ class CreateViewController: ManagementKeyboardViewController {
     // MARK: - Add New Items
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
-        let newCategory = Category()
-        // indexデータにタイトルを格納
-        newCategory.index = titleTextField.text ?? "No Title"
         do {
             try realm.write {
-                let newArticles = newCategory.articles
-                // Categoryの子データであるArticleにタイトルとコンテンツを格納
+                // Sectionにデータを保存
+                realm.add(Section(area: sectionDate), update: .modified)
+                // Articleの各データを取得
                 let article = Article()
-                // titleTextFieldに値がなければ"No Title"を保存する
+                // Categoryの各データを取得
+                let newArticle = Category().articles
+                // Articleに各データを代入
                 article.title = titleTextField.text ?? "No Title"
-                // contentTextFieldに値がなければ"No Content"を保存する
                 article.content = contentTextView.text ?? "No Content"
-                
-                newArticles.append(article)
+                // 代入したArticleデータをCategoryの子データに格納
+                newArticle.append(article)
+                // Categoryに各データを保存
+                realm.add(Category(index: titleTextField.text ?? "No Title",
+                                   date: sectionDate,
+                                   week: cellWeek,
+                                   day: cellDay,
+                                   time: cellTime,
+                                   articles: newArticle))
             }
+            
         } catch {
-            print("エラー\(error)")
+            print("Post error\(error)")
         }
         // 保存
-        save(category: newCategory)
+        //        save(section: newSection)
         dismiss(animated: true, completion: nil)
         print("投稿完了")
     }
-
+    
 }

@@ -11,6 +11,15 @@ import RealmSwift
 // 記事を月毎に分けるデータ
 class Section: Object {
     @objc dynamic var area: String = ""
+
+    convenience init(area: String) {
+        self.init()
+        self.area = area
+    }
     // 子を指定
-    let categorys = List<Category>()
+//    var categorys = List<Category>()
+    // 主キーを設定
+    override static func primaryKey() -> String? {
+        return "area"
+    }
 }

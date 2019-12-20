@@ -12,7 +12,7 @@ import RealmSwift
 class ArticleViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
-    var selectedCategory: Category?
+    var selectedCategory = Category()
     
     var texts = false
     
@@ -71,9 +71,9 @@ class ArticleViewController: ManagementKeyboardViewController {
             // 記事をアップデートする
             do {
                 try realm.write {
-                    selectedCategory?.index = diaryTitle.text ?? "No Title"
-                    selectedCategory?.articles.first?.title = diaryTitle.text ?? "No Title"
-                    selectedCategory?.articles.first?.content = diaryContent.text ?? "No Content"
+                    selectedCategory.index = diaryTitle.text ?? "No Title"
+                    selectedCategory.articles.first?.title = diaryTitle.text ?? "No Title"
+                    selectedCategory.articles.first?.content = diaryContent.text ?? "No Content"
                 }
             } catch {
                 print("エラー\(error)")
@@ -83,8 +83,8 @@ class ArticleViewController: ManagementKeyboardViewController {
     }
     // 受け取ったデータからリストを取得し、textに表示させる
     func loadArticle() {
-        diaryTitle.text = selectedCategory?.articles.first?.title
-        diaryContent.text = selectedCategory?.articles.first?.content
+        diaryTitle.text = selectedCategory.articles.first?.title
+        diaryContent.text = selectedCategory.articles.first?.content
     }
 }
 

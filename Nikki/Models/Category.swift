@@ -8,11 +8,26 @@
 
 import Foundation
 import RealmSwift
-// ホームで表示する記事データ
+// ホームで表示するセルデータ
 class Category: Object {
     @objc dynamic var index: String = ""
-    // 親を指定
-    var parentSection = LinkingObjects(fromType: Section.self, property: "categorys")
+    @objc dynamic var date: String = ""
+    @objc dynamic var week: String = ""
+    @objc dynamic var day: String = ""
+    @objc dynamic var time: String = ""
     // 子を指定
-    let articles = List<Article>()
+    var articles = List<Article>()
+    
+    convenience init(index: String, date: String, week: String, day: String, time: String, articles: List<Article>) {
+        self.init()
+        self.index = index
+        self.date = date
+        self.week = week
+        self.day = day
+        self.time = time
+        self.articles = articles
+    }
+    // 親を指定
+//    var parentSection = LinkingObjects(fromType: Section.self, property: "categorys")
+    
 }
