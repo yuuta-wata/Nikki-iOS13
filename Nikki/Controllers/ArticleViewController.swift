@@ -12,22 +12,24 @@ import RealmSwift
 class ArticleViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
-    var selectedCategory: Category?
+    var selectedCategory = Category()
     
     var texts = false
     
+    @IBOutlet weak var articleNavItem: UINavigationItem!
     @IBOutlet weak var diaryTitle: UITextField!
     @IBOutlet weak var diaryContent: UITextView!
     // diaryContentの底側の制約を取得
     @IBOutlet weak var diaryContentBottomConstraints: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ロード
+        loadArticle()
         // TextFieldが選択されたら通知
         diaryTitle.delegate = self
         // TextViewが選択されたら通知
         diaryContent.delegate = self
-        // ロード
-        loadArticle()
+        
     }
     
     // 画面を表示させる前に呼ばせる
@@ -69,9 +71,9 @@ class ArticleViewController: ManagementKeyboardViewController {
             // 記事をアップデートする
             do {
                 try realm.write {
-                    selectedCategory?.index = diaryTitle.text ?? "No Title"
-                    selectedCategory?.articles.first?.title = diaryTitle.text ?? "No Title"
-                    selectedCategory?.articles.first?.content = diaryContent.text ?? "No Content"
+                    selectedCategory.index = diaryTitle.text ?? "No Title"
+                    selectedCategory.articles.first?.title = diaryTitle.text ?? "No Title"
+                    selectedCategory.articles.first?.content = diaryContent.text ?? "No Content"
                 }
             } catch {
                 print("エラー\(error)")
@@ -81,8 +83,8 @@ class ArticleViewController: ManagementKeyboardViewController {
     }
     // 受け取ったデータからリストを取得し、textに表示させる
     func loadArticle() {
-        diaryTitle.text = selectedCategory?.articles.first?.title
-        diaryContent.text = selectedCategory?.articles.first?.content
+        diaryTitle.text = selectedCategory.articles.first?.title
+        diaryContent.text = selectedCategory.articles.first?.content
     }
 }
 
