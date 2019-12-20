@@ -14,7 +14,7 @@ class HomeViewController: SwipeTableViewController {
     // Realmを取得
     let realm = try! Realm()
     // セクションに表示する日付を取得
-    let items = try! Realm().objects(Section.self).sorted(by: ["area"])
+    let items = try! Realm().objects(Section.self).sorted(byKeyPath: "area", ascending: false)
     // String型にダウンキャスト
     var sectionNames: [String] {
         return items.value(forKeyPath: "area") as! [String]
