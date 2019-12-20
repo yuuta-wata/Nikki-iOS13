@@ -13,12 +13,15 @@ import SwipeCellKit
 class HomeViewController: SwipeTableViewController {
     // Realmを取得
     let realm = try! Realm()
+    // セクションに表示する日付を取得
     let items = try! Realm().objects(Section.self).sorted(by: ["area"])
+    // String型にダウンキャスト
     var sectionNames: [String] {
         return items.value(forKeyPath: "area") as! [String]
     }
-    // Sectionデータ型を宣言
+    // セルに表示するデータを取得
     var categorys: Results<Category>?
+    
     @IBOutlet weak var homeNavItem: UINavigationItem!
     
     override func viewDidLoad() {
@@ -43,18 +46,15 @@ class HomeViewController: SwipeTableViewController {
     
     // セルを表示する行数を取得
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // categoriesにデータがなければセルを１表示する
-        return categorys?.count ?? 1
-        // 取得したセクションareaデータが指定したareaと一致する
-//        return items.filter("area == %@", sectionNames[section]).count
+        // 取得した記事の日付と取得したセクションの日付が完全一致する数を取得し、何もなければ１とする
+        return categorys?.filter("date == %@", sectionNames[section]).count ?? 1
     }
     // セルを作成
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        // catedoriesにデータがなければ"No Title"をセルテキストに代入
-        cell.textLabel?.text = categorys?[indexPath.row].index ?? "No Title"
-//        cell.textLabel?.text = items.filter("area == %@", sectionNames[indexPath.section])[indexPath.row].area
+        // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
+        cell.textLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
         
         return cell
     }

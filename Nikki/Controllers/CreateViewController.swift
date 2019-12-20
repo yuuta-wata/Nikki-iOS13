@@ -12,6 +12,7 @@ import RealmSwift
 class CreateViewController: ManagementKeyboardViewController {
     // Realmを取得
     let realm = try! Realm()
+    // 日付を取得するための変数
     var sectionDate = ""
     var cellWeek = ""
     var cellDay = ""
@@ -88,18 +89,6 @@ class CreateViewController: ManagementKeyboardViewController {
         contentTextViewBottomConstraints.constant = 0.0
     }
     
-    // MARK: - Data Manipulation Methods
-    // セーブメソッド
-    func save(section: Section) {
-        do {
-            try realm.write {
-                realm.add(section)
-            }
-        } catch {
-            print("カテゴリ保存のエラー \(error)")
-        }
-    }
-    
     // MARK: - Add New Items
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
@@ -128,8 +117,6 @@ class CreateViewController: ManagementKeyboardViewController {
         } catch {
             print("Post error\(error)")
         }
-        // 保存
-        //        save(section: newSection)
         dismiss(animated: true, completion: nil)
         print("投稿完了")
     }
