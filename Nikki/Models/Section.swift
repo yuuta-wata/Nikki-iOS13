@@ -8,8 +8,9 @@
 
 import Foundation
 import RealmSwift
-// 記事を月毎に分けるデータ
+// TableViewのsectionで使うオブジェクト
 class Section: Object {
+    // 記事を月毎に分けるデータ
     @objc dynamic var area: String = ""
 
     convenience init(area: String) {

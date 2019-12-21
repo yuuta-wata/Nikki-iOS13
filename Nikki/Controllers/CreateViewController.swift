@@ -14,9 +14,11 @@ class CreateViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     // 日付を取得するための変数
     var sectionDate = ""
-    var cellWeek = ""
-    var cellDay = ""
-    var cellTime = ""
+    var week = ""
+    var day = ""
+    var hours = ""
+    // ソート用の変数
+    var sort = ""
     
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -46,18 +48,18 @@ class CreateViewController: ManagementKeyboardViewController {
             jpDateFormate.setLocalizedDateFormatFromTemplate("yMMMM")
             sectionDate = jpDateFormate.string(from: Date())
             print(sectionDate)
-            // cell用の曜日を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("EEEEE")
-            cellWeek = jpDateFormate.string(from: Date())
-            print(cellWeek)
             // cell用の日付を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("dd")
-            cellDay = jpDateFormate.string(from: Date())
-            print(cellDay)
+            jpDateFormate.setLocalizedDateFormatFromTemplate("ddEEE")
+            day = jpDateFormate.string(from: Date())
+            print(day)
             // cell用の時刻を取得
             jpDateFormate.setLocalizedDateFormatFromTemplate("jm")
-            cellTime = jpDateFormate.string(from: Date())
-            print(cellTime)
+            hours = jpDateFormate.string(from: Date())
+            print(hours)
+            // ソート用の日付を取得
+            jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMM jmss")
+            sort = jpDateFormate.string(from: Date())
+            print(sort)
         }
     }
     
@@ -106,11 +108,11 @@ class CreateViewController: ManagementKeyboardViewController {
                 // 代入したArticleデータをCategoryの子データに格納
                 newArticle.append(article)
                 // Categoryに各データを保存
-                realm.add(Category(index: titleTextField.text ?? "No Title",
-                                   date: sectionDate,
-                                   week: cellWeek,
-                                   day: cellDay,
-                                   time: cellTime,
+                realm.add(Category(date: sectionDate,
+                                   index: titleTextField.text ?? "No Title",
+                                   day: day,
+                                   hours: hours,
+                                   sort: sort,
                                    articles: newArticle))
             }
             
