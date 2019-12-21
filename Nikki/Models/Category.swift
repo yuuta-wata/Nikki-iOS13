@@ -8,26 +8,24 @@
 
 import Foundation
 import RealmSwift
-// ホームで表示するセルデータ
+// TableViewのcellに関連するオブジェクト
 class Category: Object {
-    @objc dynamic var index: String = ""
     @objc dynamic var date: String = ""
-    @objc dynamic var week: String = ""
+    @objc dynamic var index: String = ""
     @objc dynamic var day: String = ""
-    @objc dynamic var time: String = ""
+    @objc dynamic var hours: String = ""
+    @objc dynamic var sort: String = ""
     // 子を指定
     var articles = List<Article>()
     
-    convenience init(index: String, date: String, week: String, day: String, time: String, articles: List<Article>) {
+    convenience init(date: String, index: String, day: String, hours: String, sort: String, articles: List<Article>) {
         self.init()
-        self.index = index
         self.date = date
-        self.week = week
+        self.index = index
         self.day = day
-        self.time = time
+        self.hours = hours
+        self.sort = sort
         self.articles = articles
     }
-    // 親を指定
-//    var parentSection = LinkingObjects(fromType: Section.self, property: "categorys")
     
 }

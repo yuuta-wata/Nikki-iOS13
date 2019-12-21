@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-// 記事データ
+// ユーザーが記入した記事データを保存するオブジェクト
 class Article: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var content: String = ""
