@@ -21,16 +21,15 @@
                                     <navigationItem title="Title" id="dfm-jI-z1i"/>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyX-69-eyV">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyX-69-eyV">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Yuy-vb-W8F" kind="embed" id="kzj-U5-gYk"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-HO-ox3">
-                                <rect key="frame" x="267" y="751" width="127" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="292" y="757" width="102" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="ボタンだよ"/>
                                 <connections>
                                     <segue destination="nyt-EM-5ht" kind="presentation" modalPresentationStyle="fullScreen" id="8uU-Kh-jB2"/>
@@ -39,11 +38,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="N6Z-kb-aCp" firstAttribute="trailing" secondItem="yOb-HO-ox3" secondAttribute="trailing" constant="20" id="0Ps-eH-msq"/>
                             <constraint firstItem="dtz-NM-hdf" firstAttribute="trailing" secondItem="N6Z-kb-aCp" secondAttribute="trailing" id="2It-ZG-HyY"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="bottom" secondItem="N6Z-kb-aCp" secondAttribute="bottom" id="7e5-z8-veN"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="leading" secondItem="N6Z-kb-aCp" secondAttribute="leading" id="C3J-0v-0Xc"/>
                             <constraint firstItem="dtz-NM-hdf" firstAttribute="top" secondItem="N6Z-kb-aCp" secondAttribute="top" id="KDo-pg-gXt"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="trailing" secondItem="N6Z-kb-aCp" secondAttribute="trailing" id="XAv-h0-jVg"/>
                             <constraint firstItem="dtz-NM-hdf" firstAttribute="leading" secondItem="N6Z-kb-aCp" secondAttribute="leading" id="eC3-vp-eL1"/>
-                            <constraint firstItem="N6Z-kb-aCp" firstAttribute="bottom" secondItem="yOb-HO-ox3" secondAttribute="bottom" constant="20" id="kRC-oh-4Gl"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="top" secondItem="dtz-NM-hdf" secondAttribute="bottom" symbolic="YES" id="ry1-7J-jPV"/>
+                            <constraint firstItem="N6Z-kb-aCp" firstAttribute="bottom" secondItem="yOb-HO-ox3" secondAttribute="bottom" constant="20" id="t3Y-Qe-ldu"/>
+                            <constraint firstItem="N6Z-kb-aCp" firstAttribute="trailing" secondItem="yOb-HO-ox3" secondAttribute="trailing" constant="20" id="wux-UN-38h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N6Z-kb-aCp"/>
                     </view>
@@ -51,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N94-HU-qWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1162" y="733"/>
+            <point key="canvasLocation" x="1160.8695652173915" y="732.58928571428567"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="YeX-75-jBq">
@@ -250,7 +253,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="bottom" secondItem="95A-NZ-OzK" secondAttribute="bottom" id="aNk-EK-ng7"/>
-                            <constraint firstItem="Z48-XJ-Id7" firstAttribute="top" secondItem="DiP-aM-L2P" secondAttribute="top" constant="20" symbolic="YES" id="eQ8-Rw-LDu"/>
+                            <constraint firstItem="Z48-XJ-Id7" firstAttribute="top" secondItem="DiP-aM-L2P" secondAttribute="top" constant="20" id="eQ8-Rw-LDu"/>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="trailing" secondItem="95A-NZ-OzK" secondAttribute="trailing" id="jbB-cN-ad7"/>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="leading" secondItem="95A-NZ-OzK" secondAttribute="leading" id="w3F-7D-qQS"/>
                         </constraints>

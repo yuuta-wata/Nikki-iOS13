@@ -84,11 +84,10 @@ extension HomeViewController: UITableViewDelegate {
     
     // セルが選択されていることを通知する
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // セルをタッチした時に選択解除のアニメーションを追加
-        tableView.deselectRow(at: indexPath, animated: true)
         // 選択したセルに指定した識別子でセグエを開始する
         performSegue(withIdentifier: K.categoryCell, sender: self)
-        
+        // セルをタッチした時に選択解除のアニメーションを追加
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     // セグエ実行中の処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
