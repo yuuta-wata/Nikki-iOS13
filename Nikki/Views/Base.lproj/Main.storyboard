@@ -52,7 +52,7 @@
         <!--ホーム-->
         <scene sceneID="KFC-fI-aC5">
             <objects>
-                <viewController id="zKl-L1-2Ip" sceneMemberID="viewController">
+                <viewController id="zKl-L1-2Ip" customClass="HomeViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u9e-Xq-w6r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,6 +272,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0mo-nR-r37" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rCq-6K-CdO">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -283,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="216" y="733"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tBH-U3-eb1">
             <objects>
-                <viewController id="Yuy-vb-W8F" sceneMemberID="viewController">
+                <viewController id="Yuy-vb-W8F" customClass="HomeViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiP-aM-L2P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,8 +309,10 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="95A-NZ-OzK"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Z48-XJ-Id7" id="kKq-QH-VzG"/>
                         <segue destination="CRR-6R-PKR" kind="presentation" identifier="goToArticle" modalPresentationStyle="fullScreen" id="nPb-U3-S71"/>
                     </connections>
                 </viewController>
