@@ -29,6 +29,7 @@ class HomeViewController: UITableViewController {
     // セルに表示するデータを取得
     var categorys: Results<Category>?
     
+    
     @IBOutlet weak var homeNavItem: UINavigationItem!
     
     override func viewDidLoad() {
