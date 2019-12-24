@@ -8,14 +8,6 @@
 
 import UIKit
 import RealmSwift
-// セルをカスタマイズ
-class TableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var cellDayLabel: UILabel!
-    @IBOutlet weak var cellTimeLabel: UILabel!
-    @IBOutlet weak var cellTitleLabel: UILabel!
-    @IBOutlet weak var cellImageView: UIImageView!
-}
 
 class HomeViewController: UIViewController {
     // Realmを取得
@@ -34,7 +26,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // DateSourceを設定
         tableView.dataSource = self
+        // Delegateを設定
+        tableView.delegate = self
         // セルの縦幅
         tableView.rowHeight = 100.0
     }
@@ -54,9 +49,9 @@ class HomeViewController: UIViewController {
     }
 }
 
-    // MARK: - TableView Datasource Methods
+// MARK: - TableView Datasource Methods
 extension HomeViewController: UITableViewDataSource {
-
+    
     // 表示するセクションの数を取得
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionNames.count
@@ -77,14 +72,20 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
         cell.textLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
-//        cell.cellDayLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].day ?? "不明"
-//        cell.cellTimeLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? "不明"
         
         return cell
     }
-    // MARK: - TbaleView Delegate Methods
+    
+    
+}
+
+// MARK: - TbaleView Delegate Methods
+extension HomeViewController: UITableViewDelegate {
+    
     // セルが選択されていることを通知する
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // セルをタッチした時に選択解除のアニメーションを追加
+        tableView.deselectRow(at: indexPath, animated: true)
         // 選択したセルに指定した識別子でセグエを開始する
         performSegue(withIdentifier: K.categoryCell, sender: self)
         
@@ -98,5 +99,4 @@ extension HomeViewController: UITableViewDataSource {
             }
         }
     }
-    
 }
