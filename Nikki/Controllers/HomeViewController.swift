@@ -32,14 +32,11 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    @IBOutlet weak var homeNavItem: UINavigationItem!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.dataSource = self
+        tableView.dataSource = self
         // セルの縦幅
-//        tableView.rowHeight = 100.0
+        tableView.rowHeight = 100.0
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -53,7 +50,7 @@ class HomeViewController: UIViewController {
         // Realmからデータをロード
         categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
         // テーブルビューをロード
-//        tableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -77,11 +74,11 @@ extension HomeViewController: UITableViewDataSource {
     // セルを作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
         cell.textLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
-        cell.cellDayLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].day ?? "不明"
-        cell.cellTimeLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? "不明"
+//        cell.cellDayLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].day ?? "不明"
+//        cell.cellTimeLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? "不明"
         
         return cell
     }
