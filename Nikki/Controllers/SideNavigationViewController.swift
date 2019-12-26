@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol SideNavigationDelegate: NSObjectProtocol {
+    
+}
+
 class SideNavigationViewController: UIViewController {
 
+    weak var delegate: SideNavigationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

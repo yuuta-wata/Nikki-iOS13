@@ -100,8 +100,8 @@
 		43E5051E23A19118002050E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				43E5051023A190EC002050E8 /* Main.storyboard */,
 				43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */,
+				43E5051023A190EC002050E8 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,12 +109,12 @@
 		43E5051F23A19122002050E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43024C1023B2B56D0067CF92 /* BaseViewController.swift */,
+				43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */,
 				43E5050E23A190EC002050E8 /* HomeViewController.swift */,
 				43E5052323A1AB9B002050E8 /* CreateViewController.swift */,
 				43B3715B23A4211700D8A3CD /* ArticleViewController.swift */,
 				43F4DCE823A8470B00A06FA6 /* ManagementKeyboardViewController.swift */,
-				43024C1023B2B56D0067CF92 /* BaseViewController.swift */,
-				43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

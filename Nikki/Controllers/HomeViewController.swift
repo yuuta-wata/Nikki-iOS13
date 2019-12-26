@@ -32,6 +32,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         // セルの縦幅
         tableView.rowHeight = 100.0
+        
+        menuButtonPressed()
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +48,15 @@ class HomeViewController: UIViewController {
         categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
+    }
+    
+    // MARK: - Private Function
+    @objc private func menuButtonPressed() {
+        if let parentViewController = self.parent?.parent {
+            let vc = parentViewController as! BaseViewController
+            vc.openSideNavigation()
+            
+        }
     }
 }
 
