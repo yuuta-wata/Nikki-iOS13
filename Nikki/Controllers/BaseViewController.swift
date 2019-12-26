@@ -20,7 +20,6 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("最初")
         // 一番最初に表示するViewController
         displayMainContantsViewController()
         // ベース画面の透明ボタン初期状態を設定
@@ -53,7 +52,7 @@ class BaseViewController: UIViewController {
         touchBeganPositionX = beginPosition.x
         
         // Debug.
-        //print("サイドナビゲーションが開いた状態でのドラッグ開始時のx座標:\(touchBeganPositionX)")
+        print("サイドナビゲーションが開いた状態でのドラッグ開始時のx座標:\(String(describing: touchBeganPositionX))")
     }
     // サイドナビゲーションが開いた状態：タッチイベントの実行中の処理
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,7 +61,7 @@ class BaseViewController: UIViewController {
          タッチイベント開始位置のx座標がサイドナビゲーション幅より大きい場合
          メインコンテンツと透明ボタンをドラッグで動かすことができるようにする
          */
-        if sideNavigationStatus == .opened && touchBeganPositionX >= 260 {
+        if sideNavigationStatus == .opened && touchBeganPositionX >= 300 {
             // サイドナビゲーション及びメインコンテンツのタッチイベントを無効にする
             sideNavigationContainer.isUserInteractionEnabled = false
             mainContentsContainer.isUserInteractionEnabled = false
@@ -81,9 +80,9 @@ class BaseViewController: UIViewController {
             wrapperButton.frame = viewFrame
             
             // Debug.
-            //print("サイドナビゲーションが開いた状態でのドラッグ中のx座標:\(viewFrame.origin.x)")
+            print("サイドナビゲーションが開いた状態でのドラッグ中のx座標:\(viewFrame.origin.x)")
             
-            // メインコンテンツのx座標が0〜260の間に収まるように補正
+            // メインコンテンツのx座標が0〜300の間に収まるように補正
             if mainContentsContainer.frame.origin.x > 300 {
 
                 mainContentsContainer.frame.origin.x = 300
@@ -233,7 +232,7 @@ class BaseViewController: UIViewController {
     }
     // 最初に表示させるViewControllerをメイン画面に埋め込む
     private func displayMainContantsViewController() {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
+        if let vc = UIStoryboard(name: "MainContents", bundle: nil).instantiateInitialViewController() {
             // ここで埋め込んでいる
             mainContentsContainer.addSubview(vc.view)
             // 埋め込んだViewが親になるとwrapperButtonが押せなくなるので、子Viewに設定する

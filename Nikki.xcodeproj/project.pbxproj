@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43024C0F23B2A09C0067CF92 /* SideNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */; };
+		43024C0F23B2A09C0067CF92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43024C0E23B2A09C0067CF92 /* Main.storyboard */; };
 		43024C1123B2B56D0067CF92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43024C1023B2B56D0067CF92 /* BaseViewController.swift */; };
 		43024C1323B2B5D70067CF92 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */; };
 		4394265923B351EC00B42D36 /* SideNavigationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394265823B351EC00B42D36 /* SideNavigationStatus.swift */; };
@@ -17,7 +17,7 @@
 		43E5050B23A190EC002050E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5050A23A190EC002050E8 /* AppDelegate.swift */; };
 		43E5050D23A190EC002050E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5050C23A190EC002050E8 /* SceneDelegate.swift */; };
 		43E5050F23A190EC002050E8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5050E23A190EC002050E8 /* HomeViewController.swift */; };
-		43E5051223A190EC002050E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E5051023A190EC002050E8 /* Main.storyboard */; };
+		43E5051223A190EC002050E8 /* MainContents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E5051023A190EC002050E8 /* MainContents.storyboard */; };
 		43E5051423A190ED002050E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5051323A190ED002050E8 /* Assets.xcassets */; };
 		43E5051723A190ED002050E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E5051523A190ED002050E8 /* LaunchScreen.storyboard */; };
 		43E5052223A19269002050E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5052123A19269002050E8 /* Constants.swift */; };
@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nikki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideNavigation.storyboard; sourceTree = "<group>"; };
+		43024C0E23B2A09C0067CF92 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		43024C1023B2B56D0067CF92 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 		4394265823B351EC00B42D36 /* SideNavigationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationStatus.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		43E5050A23A190EC002050E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E5050C23A190EC002050E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43E5050E23A190EC002050E8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		43E5051123A190EC002050E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43E5051123A190EC002050E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainContents.storyboard; sourceTree = "<group>"; };
 		43E5051323A190ED002050E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43E5051623A190ED002050E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43E5051823A190ED002050E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		43E5051E23A19118002050E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */,
-				43E5051023A190EC002050E8 /* Main.storyboard */,
+				43024C0E23B2A09C0067CF92 /* Main.storyboard */,
+				43E5051023A190EC002050E8 /* MainContents.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,9 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5051723A190ED002050E8 /* LaunchScreen.storyboard in Resources */,
-				43024C0F23B2A09C0067CF92 /* SideNavigation.storyboard in Resources */,
+				43024C0F23B2A09C0067CF92 /* Main.storyboard in Resources */,
 				43E5051423A190ED002050E8 /* Assets.xcassets in Resources */,
-				43E5051223A190EC002050E8 /* Main.storyboard in Resources */,
+				43E5051223A190EC002050E8 /* MainContents.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +283,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		43E5051023A190EC002050E8 /* Main.storyboard */ = {
+		43E5051023A190EC002050E8 /* MainContents.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				43E5051123A190EC002050E8 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainContents.storyboard;
 			sourceTree = "<group>";
 		};
 		43E5051523A190ED002050E8 /* LaunchScreen.storyboard */ = {
