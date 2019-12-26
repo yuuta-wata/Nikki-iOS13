@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43024C0F23B2A09C0067CF92 /* SideNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */; };
+		43024C1123B2B56D0067CF92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43024C1023B2B56D0067CF92 /* BaseViewController.swift */; };
+		43024C1323B2B5D70067CF92 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */; };
+		4394265923B351EC00B42D36 /* SideNavigationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394265823B351EC00B42D36 /* SideNavigationStatus.swift */; };
 		43B3715C23A4211700D8A3CD /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3715B23A4211700D8A3CD /* ArticleViewController.swift */; };
 		43C6BF3B23A32C9E00D485F4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6BF3A23A32C9E00D485F4 /* Category.swift */; };
 		43C6BF3D23A32D6F00D485F4 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6BF3C23A32D6F00D485F4 /* Article.swift */; };
@@ -25,6 +29,10 @@
 
 /* Begin PBXFileReference section */
 		3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nikki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideNavigation.storyboard; sourceTree = "<group>"; };
+		43024C1023B2B56D0067CF92 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
+		4394265823B351EC00B42D36 /* SideNavigationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationStatus.swift; sourceTree = "<group>"; };
 		43B3715B23A4211700D8A3CD /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		43C6BF3A23A32C9E00D485F4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		43C6BF3C23A32D6F00D485F4 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 		43E5051E23A19118002050E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43024C0E23B2A09C0067CF92 /* SideNavigation.storyboard */,
 				43E5051023A190EC002050E8 /* Main.storyboard */,
 			);
 			path = Views;
@@ -100,6 +109,8 @@
 		43E5051F23A19122002050E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				43024C1023B2B56D0067CF92 /* BaseViewController.swift */,
+				43024C1223B2B5D70067CF92 /* SideNavigationViewController.swift */,
 				43E5050E23A190EC002050E8 /* HomeViewController.swift */,
 				43E5052323A1AB9B002050E8 /* CreateViewController.swift */,
 				43B3715B23A4211700D8A3CD /* ArticleViewController.swift */,
@@ -115,6 +126,7 @@
 				43C6BF3A23A32C9E00D485F4 /* Category.swift */,
 				43C6BF3C23A32D6F00D485F4 /* Article.swift */,
 				43E5052123A19269002050E8 /* Constants.swift */,
+				4394265823B351EC00B42D36 /* SideNavigationStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5051723A190ED002050E8 /* LaunchScreen.storyboard in Resources */,
+				43024C0F23B2A09C0067CF92 /* SideNavigation.storyboard in Resources */,
 				43E5051423A190ED002050E8 /* Assets.xcassets in Resources */,
 				43E5051223A190EC002050E8 /* Main.storyboard in Resources */,
 			);
@@ -253,8 +266,11 @@
 			files = (
 				43C6BF3D23A32D6F00D485F4 /* Article.swift in Sources */,
 				43B3715C23A4211700D8A3CD /* ArticleViewController.swift in Sources */,
+				43024C1123B2B56D0067CF92 /* BaseViewController.swift in Sources */,
+				4394265923B351EC00B42D36 /* SideNavigationStatus.swift in Sources */,
 				43E5052423A1AB9B002050E8 /* CreateViewController.swift in Sources */,
 				43E5050F23A190EC002050E8 /* HomeViewController.swift in Sources */,
+				43024C1323B2B5D70067CF92 /* SideNavigationViewController.swift in Sources */,
 				43FCD7E423AAB2F500E04F69 /* Section.swift in Sources */,
 				43E5050B23A190EC002050E8 /* AppDelegate.swift in Sources */,
 				43E5050D23A190EC002050E8 /* SceneDelegate.swift in Sources */,

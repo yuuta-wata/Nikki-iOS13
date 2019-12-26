@@ -9,6 +9,7 @@
 import Foundation
 
 struct K {
-    static let cellIdentifier = "Cell"
+    static let cellIdentifier = "cell"
     static let categoryCell = "goToArticle"
+    static let sideNavigationEmbedSegue = "connectSideNavigationContainer"
 }
