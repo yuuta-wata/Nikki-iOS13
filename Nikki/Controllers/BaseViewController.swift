@@ -136,12 +136,12 @@ class BaseViewController: UIViewController {
         mainContentsContainer.frame.origin.x += move.x
         
         // Debug.
-        //print("サイドナビゲーションが閉じた状態でのドラッグの加算量:\(move.x)")
+        print("サイドナビゲーションが閉じた状態でのドラッグの加算量:\(move.x)")
         
         // サイドナビゲーションとボタンのアルファ値を変更
         sideNavigationContainer.alpha = mainContentsContainer.frame.origin.x / 300
         wrapperButton.alpha           = mainContentsContainer.frame.origin.x / 300 * 0.36
-        // メイン画面のx座標が0〜260の間に収まるように補正
+        // メイン画面のx座標が0〜300の間に収まるように補正
         if mainContentsContainer.frame.origin.x > 300 {
             mainContentsContainer.frame.origin.x = 300
             wrapperButton.frame.origin.x         = 300
@@ -152,14 +152,18 @@ class BaseViewController: UIViewController {
         
         // ドラッグ終了時の処理
         /*
-         境界値(x座標: 160)のところで開閉状態を決める
+         境界値(x座標: 50)のところで開閉状態を決める
          ボタンエリアが開いた時の位置から変わらない時(x座標: 300)または境界値より前ではコンテンツを閉じる
          */
         if sender.state == UIGestureRecognizer.State.ended {
-            if mainContentsContainer.frame.origin.x < 160 {
-                
+            if mainContentsContainer.frame.origin.x < 50 {
+                changeContainerSettingWithAnimation(.closed)
+            } else {
+                changeContainerSettingWithAnimation(.opened)
             }
         }
+        // viewを指の動きに合わせて平行移動させる
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
     // コンテナの開閉状態を管理する
     private func changeContainerSettingWithAnimation(_ status: SideNavigationStatus) {
@@ -184,12 +188,12 @@ class BaseViewController: UIViewController {
         UIView.animate(withDuration: 0.16, delay: 0, options: [.curveEaseOut], animations: {
             // メイン画面を移動させてサイドナビゲーションを表示させる
             self.mainContentsContainer.frame = CGRect(
-                x:      260,
+                x:      300,
                 y:      self.mainContentsContainer.frame.origin.y,
                 width:  self.mainContentsContainer.frame.width,
                 height: self.mainContentsContainer.frame.height)
             self.wrapperButton.frame = CGRect(
-                x:      260,
+                x:      300,
                 y:      self.wrapperButton.frame.origin.y,
                 width:  self.wrapperButton.frame.width,
                 height: self.wrapperButton.frame.height)

@@ -20,7 +20,8 @@ class HomeViewController: UIViewController {
     }
     // セルに表示するデータを取得
     var categorys: Results<Category>?
-    
+    // メニュー用ハンバーガーボタン
+    private var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,11 +52,11 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Private Function
+    // サイドナビゲーションが閉じた状態から左隅のドラッグを行ってコンテンツを開く際の処理
     @objc private func menuButtonPressed() {
-        if let parentViewController = self.parent?.parent {
+        if let parentViewController = self.parent {
             let vc = parentViewController as! BaseViewController
             vc.openSideNavigation()
-            
         }
     }
 }
