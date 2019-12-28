@@ -8,8 +8,17 @@
 
 import UIKit
 
+protocol ViewLogic {
+    var numberOfWeeks: Int { get set }
+    var daysArray: [String] { get set }
+}
+
 class CalendarViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var calendarNavigationItem: UINavigationItem!
+    @IBOutlet weak var prevBtn: UIBarButtonItem!
+    @IBOutlet weak var nextBtn: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
