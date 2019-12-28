@@ -69,8 +69,16 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Xjh-ko-15g" userLabel="calendar Navigation Item">
-                                        <barButtonItem key="leftBarButtonItem" title="先月" id="vlW-tC-UP9"/>
-                                        <barButtonItem key="rightBarButtonItem" title="来月" id="feH-7S-0Zn"/>
+                                        <barButtonItem key="leftBarButtonItem" title="先月" id="vlW-tC-UP9">
+                                            <connections>
+                                                <action selector="prevMonthBtn:" destination="N9g-Cd-Xh3" id="YLW-3B-cz9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="来月" id="feH-7S-0Zn">
+                                            <connections>
+                                                <action selector="nextMonthBtn:" destination="N9g-Cd-Xh3" id="Rox-QK-nLP"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -87,7 +95,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ea7-ya-N3n">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ea7-ya-N3n">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ifr-h5-N90">
@@ -126,10 +134,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="9GS-IU-QS7"/>
                     <connections>
-                        <outlet property="CalendarNavigationItem" destination="Xjh-ko-15g" id="rtB-2h-ccQ"/>
+                        <outlet property="calendarNavigationItem" destination="Xjh-ko-15g" id="RUe-73-ouh"/>
                         <outlet property="collectionView" destination="5Mh-E7-3Bc" id="TS6-7P-4fc"/>
-                        <outlet property="nextBtn" destination="feH-7S-0Zn" id="H84-gZ-KHo"/>
-                        <outlet property="prevBtn" destination="vlW-tC-UP9" id="nxd-Ct-bTR"/>
                         <outlet property="scrollView" destination="oAM-DI-f3i" id="17G-uM-okB"/>
                     </connections>
                 </viewController>

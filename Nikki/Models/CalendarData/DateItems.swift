@@ -17,7 +17,7 @@ enum DateItems {
             var day: Int
             // 初期化
             init() {
-                // Calendarをグレゴリアンでインスタンス化
+                // Calendarをグレゴリアンでインスタンス生成
                 let calendar = Calendar(identifier: .gregorian)
                 // 年、月、日を取得
                 let date = calendar.dateComponents([.year, .month, .day], from: Date())
@@ -33,14 +33,16 @@ enum DateItems {
         struct Request {
             var year: Int
             var month: Int
-            var day: Int
-            
-            init() {
+            // 月の初期設定値を引数に設定
+            init(_ monthCounter: Int) {
                 let calendar = Calendar(identifier: .gregorian)
-                let date = calendar.dateComponents([.year, .month, .day], from: Date())
-                year = date.year!
-                month = date.month!
-                day = date.day!
+                // 新しい日付を生成
+                let date = calendar.date(byAdding: .month, value: monthCounter, to: Date())
+                // 生成した日付をフォーマット
+                let newDate = calendar.dateComponents([.year, .month], from: date!)
+                // フォーマットした値を代入
+                year = newDate.year!
+                month = newDate.month!
             }
         }
     }
