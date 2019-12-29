@@ -12,8 +12,9 @@ import CalculateCalendarLogic
 
 class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate {
     let dayOfWeek = ["日", "月", "火", "水", "木", "金", "土"]
-    var weekCount = 0
-
+    var dayOfWeekCount = 0
+    var dayOfWeekColorCount = 0
+    
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
@@ -24,12 +25,28 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
         calendar.appearance.headerDateFormat = "y年MM月"
         
         settingWeek()
+        settingWeekColor()
     }
     // 曜日を日本表記に変更
     private func settingWeek() {
         for i in 0...6 {
-            calendar.calendarWeekdayView.weekdayLabels[i].text = dayOfWeek[weekCount]
-            weekCount += 1
+            calendar.calendarWeekdayView.weekdayLabels[i].text = dayOfWeek[dayOfWeekCount]
+            dayOfWeekCount += 1
+        }
+    }
+    // 曜日毎に色を変更
+    private func settingWeekColor() {
+        for i in 0...6 {
+            switch dayOfWeekColorCount {
+            case 0:
+                calendar.calendarWeekdayView.weekdayLabels[i].textColor = UIColor.red
+                dayOfWeekColorCount += 1
+            case 6:
+                calendar.calendarWeekdayView.weekdayLabels[i].textColor = UIColor.blue
+            default:
+                calendar.calendarWeekdayView.weekdayLabels[i].textColor = UIColor.black
+                dayOfWeekColorCount += 1
+            }
         }
     }
 }
