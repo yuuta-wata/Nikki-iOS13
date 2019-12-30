@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UIViewController {
+    // MARK: - Properties
     // Realmを取得
     let realm = try! Realm()
     // セクションに表示する日付を取得
@@ -20,11 +21,13 @@ class HomeViewController: UIViewController {
     }
     // セルに表示するデータを取得
     var categorys: Results<Category>?
+    
+    // MARK: - UI Parts
     // メニュー用ハンバーガーボタン
     private var menuButton: UIBarButtonItem!
-    
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // DateSourceを設定

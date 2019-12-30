@@ -9,15 +9,18 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    // MARK: - Properties
     // サイドナビゲーションの初期状態
     private var sideNavigationStatus: SideNavigationStatus = .closed
     // このViewControllerのタッチイベント開始時のx座標（コンテンツが開いた状態で仕込まれる）
     private var touchBeganPositionX: CGFloat!
-
+    
+    // MARK: - UI Parts
     @IBOutlet weak var sideNavigationContainer: UIView!
     @IBOutlet weak var mainContentsContainer: UIView!
     @IBOutlet weak var wrapperButton: UIButton!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // 一番最初に表示するViewController
@@ -34,7 +37,7 @@ class BaseViewController: UIViewController {
         // 初期状態では左隅のGestureRecognizerを有効にする
         mainContentsContainer.addGestureRecognizer(leftEdgeGesture)
     }
-    
+    // MARK: - Setting Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.sideNavigationEmbedSegue {
             let sideNavigationViewController = segue.destination as! SideNavigationViewController
@@ -42,6 +45,8 @@ class BaseViewController: UIViewController {
 
         }
     }
+    
+    // MARK: - Touches Event
     // サイドナビゲーションが開いた状態：タッチイベントの開始時の処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

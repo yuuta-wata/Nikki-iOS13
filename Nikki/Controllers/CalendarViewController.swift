@@ -11,20 +11,21 @@ import RealmSwift
 import FSCalendar
 
 class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
-    
+    // MARK: - Properties
     let realm = try! Realm()
     var categorys: Results<Category>?
     var day = ""
-    
     let dayOfWeek = ["日", "月", "火", "水", "木", "金", "土"]
     var dayOfWeekCount = 0
     var dayOfWeekColorCount = 0
     var dayColorCount = 0
-    
+    // MARK: - UI Parts
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // FSCalendarを設定
         calendar.dataSource = self
         calendar.delegate = self
         // DateSourceを設定
@@ -48,6 +49,7 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
         // テーブルビューをロード
         tableView.reloadData()
     }
+    // MARK: - Setting
     // 曜日を日本表記に変更
     private func settingWeek() {
         for i in 0...6 {
@@ -82,11 +84,12 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
 // MARK: - UITableView DataSource Methods
 
 extension CalendarViewController: UITableViewDataSource {
+    // 表示するセルを数える
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 取得した記事の日付とカレンダーの日付が完全一致する数を取得し、何もなければ１とする
         return categorys?.filter("day == %@", day).count ?? 1
     }
-    
+    // セル生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ListCell

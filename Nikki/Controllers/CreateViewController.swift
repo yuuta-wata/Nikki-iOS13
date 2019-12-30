@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class CreateViewController: ManagementKeyboardViewController {
+    // MARK: - Properties
     // Realmを取得
     let realm = try! Realm()
     // 日付を取得するための変数
@@ -18,13 +19,14 @@ class CreateViewController: ManagementKeyboardViewController {
     var hours = ""
     var day = ""
     var sort = ""
-    
+    // MARK: - UI Parts
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     // contentTextFieldの底側の制約を取得
     @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDate()
@@ -54,11 +56,6 @@ class CreateViewController: ManagementKeyboardViewController {
         }
     }
     
-    // 戻るボタン
-    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: - TextView Size
     // 画面を表示させる前に呼ばせる
     override func keyboardWillAppear(_ notification: Notification) {
@@ -80,6 +77,12 @@ class CreateViewController: ManagementKeyboardViewController {
     override func keyboardWillDisappear(_ notification: NSNotification?) {
         // contentTextFieldの高さを元に戻す
         contentTextViewBottomConstraints.constant = 0.0
+    }
+
+    // MARK: - Setting Button Items
+    // 戻るボタン
+    @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Add New Items

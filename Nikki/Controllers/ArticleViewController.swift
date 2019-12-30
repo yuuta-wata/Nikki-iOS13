@@ -10,17 +10,19 @@ import UIKit
 import RealmSwift
 
 class ArticleViewController: ManagementKeyboardViewController {
+    // MARK: - Properties
     let realm = try! Realm()
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
     var selectedCategory = Category()
     
     var texts = false
-    
+    // MARK: - UI Parts
     @IBOutlet weak var articleNavItem: UINavigationItem!
     @IBOutlet weak var diaryTitle: UITextField!
     @IBOutlet weak var diaryContent: UITextView!
     // diaryContentの底側の制約を取得
     @IBOutlet weak var diaryContentBottomConstraints: NSLayoutConstraint!
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // ロード
@@ -31,7 +33,11 @@ class ArticleViewController: ManagementKeyboardViewController {
         diaryContent.delegate = self
         
     }
-    
+    // 受け取ったデータからリストを取得し、textに表示させる
+    func loadArticle() {
+        diaryTitle.text = selectedCategory.articles.first?.title
+        diaryContent.text = selectedCategory.articles.first?.content
+    }
     // 画面を表示させる前に呼ばせる
     override func keyboardWillAppear(_ notification: Notification) {
         // キーボードのサイズを取得
@@ -54,7 +60,7 @@ class ArticleViewController: ManagementKeyboardViewController {
         diaryContentBottomConstraints.constant = 0.0
     }
     
-    
+    // MARK: - Setting Button Items
     // 戻るボタン
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -81,11 +87,7 @@ class ArticleViewController: ManagementKeyboardViewController {
             
         }
     }
-    // 受け取ったデータからリストを取得し、textに表示させる
-    func loadArticle() {
-        diaryTitle.text = selectedCategory.articles.first?.title
-        diaryContent.text = selectedCategory.articles.first?.content
-    }
+
 }
 
 // MARK: - TextField Delegate Methods
