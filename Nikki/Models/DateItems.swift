@@ -15,9 +15,9 @@ enum DateItems {
         var month: Int
         var day: Int
         // 初期化
-        init() {
+        init(date: Date) {
             let calendar = Calendar(identifier: .gregorian)
-            let date = calendar.dateComponents([.year, .month, .day], from: Date())
+            let date = calendar.dateComponents([.year, .month, .day], from: date)
             year = date.year!
             month = date.month!
             day = date.day!

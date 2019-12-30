@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 import FSCalendar
 
 class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
@@ -16,7 +17,7 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
     var dayColorCount = 0
     
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.dataSource = self
@@ -26,6 +27,8 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
         
         settingWeek()
         settingWeekColor()
+        // カスタムセルを設定
+        tableView.registerCustomCell()
     }
     // 曜日を日本表記に変更
     private func settingWeek() {
@@ -49,4 +52,27 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
             }
         }
     }
+
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let selectDay = DateItems.Request.init(date: date)
+        let day = "\(selectDay.year)年\(selectDay.month)月\(selectDay.day)日"
+        print(day)
+    }
+}
+// MARK: - UITableView DataSource Methods
+//extension CalendarViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//    
+//    
+//}
+// MARK: - UITableView Delegate Methods
+extension CalendarViewController: UITableViewDelegate {
+    
 }

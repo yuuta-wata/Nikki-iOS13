@@ -32,11 +32,12 @@ class HomeViewController: UIViewController {
         // Delegateを設定
         tableView.delegate = self
         // カスタムセルを設定
-        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        tableView.registerCustomCell()
         // セルの縦幅
         tableView.rowHeight = 120.0
         
         menuButtonPressed()
+        print(Date())
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
