@@ -22,7 +22,7 @@
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyX-69-eyV">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="724"/>
                                 <connections>
                                     <segue destination="Yuy-vb-W8F" kind="embed" id="kzj-U5-gYk"/>
                                 </connections>
@@ -44,7 +44,7 @@
                             <constraint firstItem="dtz-NM-hdf" firstAttribute="top" secondItem="N6Z-kb-aCp" secondAttribute="top" id="KDo-pg-gXt"/>
                             <constraint firstItem="LyX-69-eyV" firstAttribute="trailing" secondItem="N6Z-kb-aCp" secondAttribute="trailing" id="XAv-h0-jVg"/>
                             <constraint firstItem="dtz-NM-hdf" firstAttribute="leading" secondItem="N6Z-kb-aCp" secondAttribute="leading" id="eC3-vp-eL1"/>
-                            <constraint firstItem="LyX-69-eyV" firstAttribute="top" secondItem="dtz-NM-hdf" secondAttribute="bottom" constant="5" id="ry1-7J-jPV"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="top" secondItem="dtz-NM-hdf" secondAttribute="bottom" constant="1" id="ry1-7J-jPV"/>
                             <constraint firstItem="N6Z-kb-aCp" firstAttribute="bottom" secondItem="yOb-HO-ox3" secondAttribute="bottom" constant="20" id="t3Y-Qe-ldu"/>
                             <constraint firstItem="N6Z-kb-aCp" firstAttribute="trailing" secondItem="yOb-HO-ox3" secondAttribute="trailing" constant="20" id="wux-UN-38h"/>
                         </constraints>
@@ -82,18 +82,16 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAM-DI-f3i">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-Yy-m7V">
                                         <rect key="frame" x="0.0" y="357.5" width="414" height="357.5"/>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="RmD-LT-oLR"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="Uic-yB-cTD"/>
-                                    </scrollView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="oAM-DI-f3i" firstAttribute="width" secondItem="DaD-KI-Lgq" secondAttribute="width" id="8v5-5H-CNf"/>
-                                    <constraint firstItem="RmD-LT-oLR" firstAttribute="width" secondItem="DaD-KI-Lgq" secondAttribute="width" id="IiJ-9F-HaK"/>
-                                    <constraint firstItem="oAM-DI-f3i" firstAttribute="height" secondItem="Kug-Rk-yJv" secondAttribute="height" multiplier="0.5" id="cxe-jx-kcL"/>
-                                    <constraint firstItem="DaD-KI-Lgq" firstAttribute="height" secondItem="Kug-Rk-yJv" secondAttribute="height" multiplier="0.5" id="fdT-qe-Vop"/>
-                                    <constraint firstItem="RmD-LT-oLR" firstAttribute="height" secondItem="DaD-KI-Lgq" secondAttribute="height" id="ngJ-wv-3CM"/>
+                                    <constraint firstItem="8Jf-Yy-m7V" firstAttribute="width" secondItem="Kug-Rk-yJv" secondAttribute="width" id="X7Y-6B-RFX"/>
+                                    <constraint firstItem="DaD-KI-Lgq" firstAttribute="width" secondItem="Kug-Rk-yJv" secondAttribute="width" id="bcC-Tu-hPw"/>
+                                    <constraint firstItem="DaD-KI-Lgq" firstAttribute="height" secondItem="Kug-Rk-yJv" secondAttribute="height" multiplier="0.5" id="pKu-gz-o2N"/>
+                                    <constraint firstItem="8Jf-Yy-m7V" firstAttribute="height" secondItem="Kug-Rk-yJv" secondAttribute="height" multiplier="0.5" id="pnb-JC-WEl"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -112,7 +110,6 @@
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="9GS-IU-QS7"/>
                     <connections>
                         <outlet property="calendar" destination="DaD-KI-Lgq" id="5WC-D1-f7H"/>
-                        <outlet property="scrollView" destination="oAM-DI-f3i" id="Rv4-fE-Ale"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV4-tc-6eL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -124,7 +121,7 @@
             <objects>
                 <viewController id="CRR-6R-PKR" customClass="ArticleViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0J-Ya-VoA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
@@ -151,7 +148,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
-                                <rect key="frame" x="20" y="162" width="374" height="558"/>
+                                <rect key="frame" x="20" y="162" width="374" height="562"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -296,11 +293,11 @@
             <objects>
                 <viewController id="Yuy-vb-W8F" customClass="HomeViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiP-aM-L2P">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Z48-XJ-Id7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="NvP-Je-fU6">
