@@ -110,6 +110,7 @@
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="9GS-IU-QS7"/>
                     <connections>
                         <outlet property="calendar" destination="DaD-KI-Lgq" id="5WC-D1-f7H"/>
+                        <outlet property="tableView" destination="8Jf-Yy-m7V" id="SYE-Xw-tEK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV4-tc-6eL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
