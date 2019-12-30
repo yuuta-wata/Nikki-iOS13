@@ -9,15 +9,18 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    // MARK: - Properties
     // サイドナビゲーションの初期状態
     private var sideNavigationStatus: SideNavigationStatus = .closed
     // このViewControllerのタッチイベント開始時のx座標（コンテンツが開いた状態で仕込まれる）
     private var touchBeganPositionX: CGFloat!
-
+    
+    // MARK: - UI Parts
     @IBOutlet weak var sideNavigationContainer: UIView!
     @IBOutlet weak var mainContentsContainer: UIView!
     @IBOutlet weak var wrapperButton: UIButton!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // 一番最初に表示するViewController
@@ -34,7 +37,7 @@ class BaseViewController: UIViewController {
         // 初期状態では左隅のGestureRecognizerを有効にする
         mainContentsContainer.addGestureRecognizer(leftEdgeGesture)
     }
-    
+    // MARK: - Setting Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.sideNavigationEmbedSegue {
             let sideNavigationViewController = segue.destination as! SideNavigationViewController
@@ -42,6 +45,8 @@ class BaseViewController: UIViewController {
 
         }
     }
+    
+    // MARK: - Touches Event
     // サイドナビゲーションが開いた状態：タッチイベントの開始時の処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -136,12 +141,12 @@ class BaseViewController: UIViewController {
         mainContentsContainer.frame.origin.x += move.x
         
         // Debug.
-        //print("サイドナビゲーションが閉じた状態でのドラッグの加算量:\(move.x)")
+        print("サイドナビゲーションが閉じた状態でのドラッグの加算量:\(move.x)")
         
         // サイドナビゲーションとボタンのアルファ値を変更
         sideNavigationContainer.alpha = mainContentsContainer.frame.origin.x / 300
         wrapperButton.alpha           = mainContentsContainer.frame.origin.x / 300 * 0.36
-        // メイン画面のx座標が0〜260の間に収まるように補正
+        // メイン画面のx座標が0〜300の間に収まるように補正
         if mainContentsContainer.frame.origin.x > 300 {
             mainContentsContainer.frame.origin.x = 300
             wrapperButton.frame.origin.x         = 300
@@ -152,14 +157,18 @@ class BaseViewController: UIViewController {
         
         // ドラッグ終了時の処理
         /*
-         境界値(x座標: 160)のところで開閉状態を決める
+         境界値(x座標: 50)のところで開閉状態を決める
          ボタンエリアが開いた時の位置から変わらない時(x座標: 300)または境界値より前ではコンテンツを閉じる
          */
         if sender.state == UIGestureRecognizer.State.ended {
-            if mainContentsContainer.frame.origin.x < 160 {
-                
+            if mainContentsContainer.frame.origin.x < 50 {
+                changeContainerSettingWithAnimation(.closed)
+            } else {
+                changeContainerSettingWithAnimation(.opened)
             }
         }
+        // viewを指の動きに合わせて平行移動させる
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
     // コンテナの開閉状態を管理する
     private func changeContainerSettingWithAnimation(_ status: SideNavigationStatus) {
@@ -184,12 +193,12 @@ class BaseViewController: UIViewController {
         UIView.animate(withDuration: 0.16, delay: 0, options: [.curveEaseOut], animations: {
             // メイン画面を移動させてサイドナビゲーションを表示させる
             self.mainContentsContainer.frame = CGRect(
-                x:      260,
+                x:      300,
                 y:      self.mainContentsContainer.frame.origin.y,
                 width:  self.mainContentsContainer.frame.width,
                 height: self.mainContentsContainer.frame.height)
             self.wrapperButton.frame = CGRect(
-                x:      260,
+                x:      300,
                 y:      self.wrapperButton.frame.origin.y,
                 width:  self.wrapperButton.frame.width,
                 height: self.wrapperButton.frame.height)

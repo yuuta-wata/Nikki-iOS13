@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UIViewController {
+    // MARK: - Properties
     // Realmを取得
     let realm = try! Realm()
     // セクションに表示する日付を取得
@@ -21,17 +22,22 @@ class HomeViewController: UIViewController {
     // セルに表示するデータを取得
     var categorys: Results<Category>?
     
-    
+    // MARK: - UI Parts
+    // メニュー用ハンバーガーボタン
+    private var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // DateSourceを設定
         tableView.dataSource = self
         // Delegateを設定
         tableView.delegate = self
+        // カスタムセルを設定
+        tableView.registerCustomCell()
         // セルの縦幅
-        tableView.rowHeight = 100.0
+        tableView.rowHeight = 120.0
         
         menuButtonPressed()
     }
@@ -51,11 +57,11 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Private Function
+    // サイドナビゲーションが閉じた状態から左隅のドラッグを行ってコンテンツを開く際の処理
     @objc private func menuButtonPressed() {
-        if let parentViewController = self.parent?.parent {
+        if let parentViewController = self.parent {
             let vc = parentViewController as! BaseViewController
             vc.openSideNavigation()
-            
         }
     }
 }
@@ -80,9 +86,11 @@ extension HomeViewController: UITableViewDataSource {
     // セルを作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ListCell
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
-        cell.textLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
+        cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
+        // 時刻を代入
+        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? ""
         
         return cell
     }

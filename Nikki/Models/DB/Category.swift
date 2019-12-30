@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 // TableViewのcellに関連するオブジェクト
 class Category: Object {
-    @objc dynamic var date: String = ""
-    @objc dynamic var index: String = ""
-    @objc dynamic var day: String = ""
-    @objc dynamic var hours: String = ""
-    @objc dynamic var sort: String = ""
+    @objc dynamic var date = ""
+    @objc dynamic var index = ""
+    @objc dynamic var day = ""
+    @objc dynamic var hours = ""
+    @objc dynamic var sort = ""
     // 子を指定
     var articles = List<Article>()
     
