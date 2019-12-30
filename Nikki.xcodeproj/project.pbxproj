@@ -155,9 +155,9 @@
 			children = (
 				4378F34723B6236C007C61E4 /* DB */,
 				4378F34823B623C1007C61E4 /* SideNabigationData */,
-				43E5052123A19269002050E8 /* Constants.swift */,
 				43D710E523B9E00700A4AB3D /* UITableViewExtension.swift */,
 				43D710E723B9F36100A4AB3D /* DateItems.swift */,
+				43E5052123A19269002050E8 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

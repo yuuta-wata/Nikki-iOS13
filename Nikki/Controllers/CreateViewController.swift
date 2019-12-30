@@ -15,8 +15,9 @@ class CreateViewController: ManagementKeyboardViewController {
     // 日付を取得するための変数
     var sectionDate = ""
     var week = ""
-    var day = ""
     var hours = ""
+    var day = ""
+    var sort = ""
     
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -31,6 +32,10 @@ class CreateViewController: ManagementKeyboardViewController {
     
     // 日付をロードする
     func loadDate() {
+        let date = DateItems.Request.init(date: Date())
+        day = "\(date.year)年\(date.month)月\(date.day)日"
+        sort = "\(date.year)年\(date.month)月\(date.day)日\(date.hour)時\(date.minute)分\(date.second)秒"
+        hours = "\(date.hour)時\(date.minute)分\(date.second)秒"
         // 日付フォーマットを初期化
         let jpDateFormate = DateFormatter()
         // 日付を日本表記にする
@@ -43,17 +48,9 @@ class CreateViewController: ManagementKeyboardViewController {
             // 日付を表示
             createViewNavItem.title = jpDateFormate.string(from: Date())
             // section用の日付を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("yMMMM")
+            jpDateFormate.setLocalizedDateFormatFromTemplate("yMMM")
             sectionDate = jpDateFormate.string(from: Date())
             print(sectionDate)
-            // cell用の日付を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("ddEEE")
-            day = jpDateFormate.string(from: Date())
-            print(day)
-            // cell用の時刻を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("jm")
-            hours = jpDateFormate.string(from: Date())
-            print(hours)
         }
     }
     
@@ -88,6 +85,7 @@ class CreateViewController: ManagementKeyboardViewController {
     // MARK: - Add New Items
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
+        
         do {
             try realm.write {
                 // Sectionにデータを保存
@@ -106,7 +104,7 @@ class CreateViewController: ManagementKeyboardViewController {
                                    index: titleTextField.text ?? "No Title",
                                    day: day,
                                    hours: hours,
-                                   sort: Date(),
+                                   sort: sort,
                                    articles: newArticle))
             }
             

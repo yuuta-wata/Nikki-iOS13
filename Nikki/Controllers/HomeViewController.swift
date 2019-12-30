@@ -37,7 +37,6 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = 120.0
         
         menuButtonPressed()
-        print(Date())
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +87,7 @@ extension HomeViewController: UITableViewDataSource {
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
         cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
         // 時刻を代入
-        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours
+        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? ""
         
         return cell
     }

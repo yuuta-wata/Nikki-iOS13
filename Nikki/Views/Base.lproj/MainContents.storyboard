@@ -82,7 +82,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-Yy-m7V">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-Yy-m7V">
                                         <rect key="frame" x="0.0" y="357.5" width="414" height="357.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </tableView>
@@ -111,6 +111,7 @@
                     <connections>
                         <outlet property="calendar" destination="DaD-KI-Lgq" id="5WC-D1-f7H"/>
                         <outlet property="tableView" destination="8Jf-Yy-m7V" id="SYE-Xw-tEK"/>
+                        <segue destination="CRR-6R-PKR" kind="presentation" identifier="goToArticle" modalPresentationStyle="fullScreen" id="Qic-yN-O1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV4-tc-6eL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -122,7 +123,7 @@
             <objects>
                 <viewController id="CRR-6R-PKR" customClass="ArticleViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0J-Ya-VoA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
@@ -149,7 +150,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
-                                <rect key="frame" x="20" y="162" width="374" height="562"/>
+                                <rect key="frame" x="20" y="162" width="374" height="700"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -325,4 +326,7 @@
         <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qic-yN-O1q"/>
+    </inferredMetricsTieBreakers>
 </document>
