@@ -17,8 +17,6 @@ class CreateViewController: ManagementKeyboardViewController {
     var week = ""
     var day = ""
     var hours = ""
-    // ソート用の変数
-    var sort = ""
     
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -56,10 +54,6 @@ class CreateViewController: ManagementKeyboardViewController {
             jpDateFormate.setLocalizedDateFormatFromTemplate("jm")
             hours = jpDateFormate.string(from: Date())
             print(hours)
-            // ソート用の日付を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMM jmss")
-            sort = jpDateFormate.string(from: Date())
-            print(sort)
         }
     }
     
@@ -112,7 +106,7 @@ class CreateViewController: ManagementKeyboardViewController {
                                    index: titleTextField.text ?? "No Title",
                                    day: day,
                                    hours: hours,
-                                   sort: sort,
+                                   sort: Date(),
                                    articles: newArticle))
             }
             

@@ -14,11 +14,11 @@ class Category: Object {
     @objc dynamic var index: String = ""
     @objc dynamic var day: String = ""
     @objc dynamic var hours: String = ""
-    @objc dynamic var sort: String = ""
+    @objc dynamic var sort = Date()
     // 子を指定
     var articles = List<Article>()
     
-    convenience init(date: String, index: String, day: String, hours: String, sort: String, articles: List<Article>) {
+    convenience init(date: String, index: String, day: String, hours: String, sort: Date, articles: List<Article>) {
         self.init()
         self.date = date
         self.index = index
