@@ -31,8 +31,10 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         // Delegateを設定
         tableView.delegate = self
+        // カスタムセルを設定
+        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         // セルの縦幅
-        tableView.rowHeight = 100.0
+        tableView.rowHeight = 120.0
         
         menuButtonPressed()
     }
@@ -81,9 +83,11 @@ extension HomeViewController: UITableViewDataSource {
     // セルを作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ListCell
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
-        cell.textLabel?.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
+        cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
+        // 時刻を代入
+        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours
         
         return cell
     }

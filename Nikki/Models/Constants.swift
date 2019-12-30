@@ -10,6 +10,7 @@ import Foundation
 
 struct K {
     static let cellIdentifier = "ReusableCell"
+    static let cellNibName = "ListCell"
     static let categoryCell = "goToArticle"
     static let sideNavigationEmbedSegue = "connectSideNavigationContainer"
 }

@@ -10,9 +10,10 @@ import UIKit
 
 class ListCell: UITableViewCell {
     
+//    @IBOutlet weak var timeLabel: UILabel!
+//    @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var listView: UIStackView!
-    @IBOutlet weak var dayLabel: UILabel!
+    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     // 変数名imageViewにするとUITableViewCellの予約語と被るので、省略する
@@ -21,8 +22,6 @@ class ListCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // コーナーを丸くする
-        listView.layer.cornerRadius = listView.frame.size.height / 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
