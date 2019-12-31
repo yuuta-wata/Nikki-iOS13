@@ -117,4 +117,24 @@ extension HomeViewController: UITableViewDelegate {
             }
         }
     }
+    // セルをスワイプで削除するメソッド
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "削除") { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+            // 選択したセルにデータが入っていれば削除する
+            if let categoryForDeletion = self.categorys?[indexPath.row] {
+                do {
+                    try! self.realm.write {
+                        // 子データから削除する
+                        self.realm.delete(categoryForDeletion.articles)
+                        self.realm.delete(categoryForDeletion)
+                    }
+                }
+            }
+            tableView.reloadData()
+            print("削除")
+            success(true)
+        }
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }

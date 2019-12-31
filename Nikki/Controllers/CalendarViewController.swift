@@ -42,12 +42,17 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
         // カスタムセルを設定
         tableView.registerCustomCell()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        loadCategories()
+    }
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
         categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
+        // カレンダーをロード
+        calendar.reloadData()
     }
     // MARK: - Setting
     // 曜日を日本表記に変更
@@ -72,14 +77,23 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
             }
         }
     }
-
+    // MARK: - FSCalendar DataSource Methods
+    // 投稿がある日にデータを反映させる
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let eventDate = DateItems.Request.init(date: date)
+        let eventDay = "\(eventDate.year)年\(eventDate.month)月\(eventDate.day)日"
+        return categorys?.filter("day == %@", eventDay).count ?? 0
+    }
+    
+    // MARK: - FSCalendar Delegate Methods
     // カレンダーの日付をタップした時のアクション
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // タップした日付を取得
         let selectDay = DateItems.Request.init(date: date)
         day = "\(selectDay.year)年\(selectDay.month)月\(selectDay.day)日"
-        loadCategories()
+        tableView.reloadData()
     }
+    
 }
 // MARK: - UITableView DataSource Methods
 

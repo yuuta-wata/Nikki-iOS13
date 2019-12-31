@@ -10,10 +10,6 @@ import UIKit
 
 class ListCell: UITableViewCell {
     
-//    @IBOutlet weak var timeLabel: UILabel!
-//    @IBOutlet weak var titleLabel: UILabel!
-    
-    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     // 変数名imageViewにするとUITableViewCellの予約語と被るので、省略する
