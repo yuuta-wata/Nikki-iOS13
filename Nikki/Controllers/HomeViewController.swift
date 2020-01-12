@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
+        categorys = realm.objects(Category.self).sorted(byKeyPath: "date", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
     }
@@ -90,7 +90,7 @@ extension HomeViewController: UITableViewDataSource {
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
         cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
         // 時刻を代入
-        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? ""
+        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate ?? ""
         
         return cell
     }
