@@ -23,10 +23,8 @@ class HomeViewController: UIViewController {
     var categorys: Results<Category>?
     
     // MARK: - UI Parts
-    // メニュー用ハンバーガーボタン
-    private var menuButton: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +35,7 @@ class HomeViewController: UIViewController {
         // カスタムセルを設定
         tableView.registerCustomCell()
         // セルの縦幅
-        tableView.rowHeight = 120.0
-        
-        menuButtonPressed()
+        tableView.rowHeight = 100.0
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -47,22 +43,15 @@ class HomeViewController: UIViewController {
         // 画面が表示される度にロードする
         loadCategories()
     }
+    
+    
     // MARK: - Data Manipulation Methods
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self).sorted(byKeyPath: "date", ascending: false)
+        categorys = realm.objects(Category.self).sorted(byKeyPath: "cellIndicateDate", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
-    }
-    
-    // MARK: - Private Function
-    // サイドナビゲーションが閉じた状態から左隅のドラッグを行ってコンテンツを開く際の処理
-    @objc private func menuButtonPressed() {
-        if let parentViewController = self.parent {
-            let vc = parentViewController as! BaseViewController
-            vc.openSideNavigation()
-        }
     }
 }
 

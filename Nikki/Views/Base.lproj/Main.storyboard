@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ホーム-->
+        <!--View Controller-->
         <scene sceneID="KFC-fI-aC5">
             <objects>
                 <viewController id="zKl-L1-2Ip" sceneMemberID="viewController">
@@ -15,14 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtz-NM-hdf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="dfm-jI-z1i"/>
-                                </items>
-                            </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyX-69-eyV">
-                                <rect key="frame" x="0.0" y="89" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <connections>
                                     <segue destination="Yuy-vb-W8F" kind="embed" id="kzj-U5-gYk"/>
                                 </connections>
@@ -38,25 +32,22 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dtz-NM-hdf" firstAttribute="trailing" secondItem="N6Z-kb-aCp" secondAttribute="trailing" id="2It-ZG-HyY"/>
                             <constraint firstItem="LyX-69-eyV" firstAttribute="bottom" secondItem="N6Z-kb-aCp" secondAttribute="bottom" id="7e5-z8-veN"/>
                             <constraint firstItem="LyX-69-eyV" firstAttribute="leading" secondItem="N6Z-kb-aCp" secondAttribute="leading" id="C3J-0v-0Xc"/>
-                            <constraint firstItem="dtz-NM-hdf" firstAttribute="top" secondItem="N6Z-kb-aCp" secondAttribute="top" id="KDo-pg-gXt"/>
                             <constraint firstItem="LyX-69-eyV" firstAttribute="trailing" secondItem="N6Z-kb-aCp" secondAttribute="trailing" id="XAv-h0-jVg"/>
-                            <constraint firstItem="dtz-NM-hdf" firstAttribute="leading" secondItem="N6Z-kb-aCp" secondAttribute="leading" id="eC3-vp-eL1"/>
-                            <constraint firstItem="LyX-69-eyV" firstAttribute="top" secondItem="dtz-NM-hdf" secondAttribute="bottom" constant="1" id="ry1-7J-jPV"/>
+                            <constraint firstItem="LyX-69-eyV" firstAttribute="top" secondItem="N6Z-kb-aCp" secondAttribute="top" id="n4e-9L-YE8"/>
                             <constraint firstItem="N6Z-kb-aCp" firstAttribute="bottom" secondItem="yOb-HO-ox3" secondAttribute="bottom" constant="20" id="t3Y-Qe-ldu"/>
                             <constraint firstItem="N6Z-kb-aCp" firstAttribute="trailing" secondItem="yOb-HO-ox3" secondAttribute="trailing" constant="20" id="wux-UN-38h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N6Z-kb-aCp"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="fd6-sg-HNi"/>
+                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="fd6-sg-HNi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N94-HU-qWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="235"/>
+            <point key="canvasLocation" x="371.01449275362324" y="234.375"/>
         </scene>
-        <!--カレンダー-->
+        <!--Calendar View Controller-->
         <scene sceneID="zS9-Ek-ymK">
             <objects>
                 <viewController id="N9g-Cd-Xh3" customClass="CalendarViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,7 +105,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Ua-vK-a9L"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="9GS-IU-QS7"/>
+                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="9GS-IU-QS7"/>
                     <connections>
                         <outlet property="calendar" destination="DaD-KI-Lgq" id="5WC-D1-f7H"/>
                         <outlet property="tableView" destination="8Jf-Yy-m7V" id="SYE-Xw-tEK"/>
@@ -130,7 +121,7 @@
             <objects>
                 <viewController id="CRR-6R-PKR" customClass="ArticleViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0J-Ya-VoA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
@@ -157,7 +148,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
-                                <rect key="frame" x="20" y="162" width="374" height="700"/>
+                                <rect key="frame" x="20" y="162" width="374" height="607"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -302,20 +293,29 @@
             <objects>
                 <viewController id="Yuy-vb-W8F" customClass="HomeViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiP-aM-L2P">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtz-NM-hdf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="ホーム" id="dfm-jI-z1i"/>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Z48-XJ-Id7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="dtz-NM-hdf" firstAttribute="trailing" secondItem="95A-NZ-OzK" secondAttribute="trailing" id="3pm-Dk-UUI"/>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="bottom" secondItem="95A-NZ-OzK" secondAttribute="bottom" id="aNk-EK-ng7"/>
-                            <constraint firstItem="Z48-XJ-Id7" firstAttribute="top" secondItem="DiP-aM-L2P" secondAttribute="top" id="eQ8-Rw-LDu"/>
+                            <constraint firstItem="Z48-XJ-Id7" firstAttribute="top" secondItem="dtz-NM-hdf" secondAttribute="bottom" id="eQ8-Rw-LDu"/>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="trailing" secondItem="95A-NZ-OzK" secondAttribute="trailing" id="jbB-cN-ad7"/>
+                            <constraint firstItem="dtz-NM-hdf" firstAttribute="leading" secondItem="95A-NZ-OzK" secondAttribute="leading" id="vnW-XB-Qdi"/>
                             <constraint firstItem="Z48-XJ-Id7" firstAttribute="leading" secondItem="95A-NZ-OzK" secondAttribute="leading" id="w3F-7D-qQS"/>
+                            <constraint firstItem="dtz-NM-hdf" firstAttribute="top" secondItem="95A-NZ-OzK" secondAttribute="top" id="xLb-Ao-IlG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="95A-NZ-OzK"/>
                     </view>
@@ -334,6 +334,6 @@
         <image name="house.fill" catalog="system" width="64" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qic-yN-O1q"/>
+        <segue reference="nPb-U3-S71"/>
     </inferredMetricsTieBreakers>
 </document>
