@@ -23,8 +23,6 @@ class HomeViewController: UIViewController {
     var categorys: Results<Category>?
     
     // MARK: - UI Parts
-    
-    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -33,7 +31,6 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         // Delegateを設定
         tableView.delegate = self
-        navItem.title = "ホーム"
         // カスタムセルを設定
         tableView.registerCustomCell()
         // セルの縦幅
