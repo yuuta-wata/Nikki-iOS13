@@ -75,6 +75,7 @@ class ArticleViewController: ManagementKeyboardViewController {
             texts = true
             // バックカラーを変更
             diaryTitle.backgroundColor = UIColor(code: "FFFAFA")
+            diaryContent.backgroundColor = UIColor(code: "FFFAFA")
             sender.title = "完了"
         } else {
             // 記事をアップデートする
@@ -89,6 +90,7 @@ class ArticleViewController: ManagementKeyboardViewController {
             }
             // バックカラーを戻す
             diaryTitle.backgroundColor = UIColor(code: "FFF4E2")
+            diaryContent.backgroundColor = UIColor(code: "FFF4E2")
             sender.title = "編集"
             texts = false
         }
