@@ -29,6 +29,9 @@ class CreateViewController: ManagementKeyboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDate()
+        // 文字色を指定
+        titleTextField.textColor = UIColor(code: "333333")
+        contentTextView.textColor = UIColor(code: "333333")
     }
     
     // 日付をロードする

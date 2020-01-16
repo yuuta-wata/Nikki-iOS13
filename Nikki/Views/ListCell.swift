@@ -18,6 +18,9 @@ class ListCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // 文字色を指定
+        timeLabel.textColor = UIColor(code: "333333")
+        titleLabel.textColor = UIColor(code: "333333")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

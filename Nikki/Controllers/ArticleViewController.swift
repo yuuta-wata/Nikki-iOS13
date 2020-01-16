@@ -31,6 +31,9 @@ class ArticleViewController: ManagementKeyboardViewController {
         diaryTitle.delegate = self
         // TextViewが選択されたら通知
         diaryContent.delegate = self
+        // 文字色を指定
+        diaryTitle.textColor = UIColor(code: "333333")
+        diaryContent.textColor = UIColor(code: "333333")
         
     }
     // 受け取ったデータからリストを取得し、textに表示させる
@@ -70,10 +73,10 @@ class ArticleViewController: ManagementKeyboardViewController {
         // 記事の編集
         if texts == false {
             texts = true
+            // バックカラーを変更
+            diaryTitle.backgroundColor = UIColor(code: "FFFAFA")
             sender.title = "完了"
         } else {
-            texts = false
-            sender.title = "編集"
             // 記事をアップデートする
             do {
                 try realm.write {
@@ -82,12 +85,15 @@ class ArticleViewController: ManagementKeyboardViewController {
                     selectedCategory.articles.first?.content = diaryContent.text ?? "No Content"
                 }
             } catch {
-                print("エラー\(error)")
+                print("アップデートエラー\(error)")
             }
-            
+            // バックカラーを戻す
+            diaryTitle.backgroundColor = UIColor(code: "FFF4E2")
+            sender.title = "編集"
+            texts = false
         }
     }
-
+    
 }
 
 // MARK: - TextField Delegate Methods
