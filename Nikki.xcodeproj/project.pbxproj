@@ -104,7 +104,6 @@
 				43E5052023A19139002050E8 /* Models */,
 				43E5051E23A19118002050E8 /* Views */,
 				43E5051F23A19122002050E8 /* Controllers */,
-				43E5051523A190ED002050E8 /* LaunchScreen.storyboard */,
 				43E5051823A190ED002050E8 /* Info.plist */,
 			);
 			path = Nikki;
@@ -116,6 +115,7 @@
 				43E5051023A190EC002050E8 /* Main.storyboard */,
 				43D710DF23B9891400A4AB3D /* ListCell.swift */,
 				43D710E023B9891400A4AB3D /* ListCell.xib */,
+				43E5051523A190ED002050E8 /* LaunchScreen.storyboard */,
 				43E5051323A190ED002050E8 /* Assets.xcassets */,
 			);
 			path = Views;
