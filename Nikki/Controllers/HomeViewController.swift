@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     let realm = try! Realm()
     // セクションに表示する日付を取得
     let items = try! Realm().objects(Section.self).sorted(byKeyPath: "area", ascending: false)
-    // String型にダウンキャスト
+    // String型にキャスト
     var sectionNames: [String] {
         return items.value(forKeyPath: "area") as! [String]
     }
