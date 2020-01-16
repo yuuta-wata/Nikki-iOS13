@@ -15,10 +15,9 @@ class CreateViewController: ManagementKeyboardViewController {
     let realm = try! Realm()
     // 日付を取得するための変数
     var sectionDate = ""
-    var week = ""
-    var hours = ""
     var day = ""
-    var sort = ""
+    var cellIndicateDate = ""
+    var dayOfWeek = ""
     // MARK: - UI Parts
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -30,30 +29,27 @@ class CreateViewController: ManagementKeyboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDate()
+        // 文字色を指定
+        titleTextField.textColor = UIColor(code: "333333")
+        contentTextView.textColor = UIColor(code: "333333")
     }
     
     // 日付をロードする
     func loadDate() {
-        let date = DateItems.Request.init(date: Date())
-        day = "\(date.year)年\(date.month)月\(date.day)日"
-        sort = "\(date.year)年\(date.month)月\(date.day)日\(date.hour)時\(date.minute)分\(date.second)秒"
-        hours = "\(date.hour)時\(date.minute)分\(date.second)秒"
         // 日付フォーマットを初期化
         let jpDateFormate = DateFormatter()
         // 日付を日本表記にする
         jpDateFormate.locale = Locale(identifier: "ja_JP")
-        // タイムゾーンに日本を設定
-        if let timeZone = TimeZone(identifier: "Asia/Tokyo") {
-            // 日付の表示方法を指定
-            jpDateFormate.setLocalizedDateFormatFromTemplate("ydMMMEEE jm")
-            jpDateFormate.timeZone = timeZone
-            // 日付を表示
-            createViewNavItem.title = jpDateFormate.string(from: Date())
-            // section用の日付を取得
-            jpDateFormate.setLocalizedDateFormatFromTemplate("yMMM")
-            sectionDate = jpDateFormate.string(from: Date())
-            print(sectionDate)
-        }
+        // 曜日を取得
+        jpDateFormate.setLocalizedDateFormatFromTemplate("EEE")
+        dayOfWeek = jpDateFormate.string(from: Date())
+        
+        let date = DateItems.Request.init(date: Date())
+        day = "\(date.year)年\(date.month)月\(date.day)日"
+        sectionDate = "\(date.year)年\(date.month)月"
+        cellIndicateDate = "\(date.day)日(\(dayOfWeek))\(date.hour)時\(date.minute)分\(date.second)秒"
+        // ナビゲーションタイトルに日付を表示
+        createViewNavItem.title = "\(date.year)年\(date.month)月\(date.day)日\(date.hour)時\(date.minute)分\(date.second)秒"
     }
     
     // MARK: - TextView Size
@@ -78,7 +74,7 @@ class CreateViewController: ManagementKeyboardViewController {
         // contentTextFieldの高さを元に戻す
         contentTextViewBottomConstraints.constant = 0.0
     }
-
+    
     // MARK: - Setting Button Items
     // 戻るボタン
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
@@ -106,8 +102,8 @@ class CreateViewController: ManagementKeyboardViewController {
                 realm.add(Category(date: sectionDate,
                                    index: titleTextField.text ?? "No Title",
                                    day: day,
-                                   hours: hours,
-                                   sort: sort,
+                                   cellIndicateDate: cellIndicateDate,
+                                   dayOfWeek: dayOfWeek,
                                    articles: newArticle))
             }
             

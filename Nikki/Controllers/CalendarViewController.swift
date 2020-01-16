@@ -48,7 +48,7 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
+        categorys = realm.objects(Category.self).sorted(byKeyPath: "date", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
         // カレンダーをロード
@@ -108,7 +108,7 @@ extension CalendarViewController: UITableViewDataSource {
         // 再利用するセルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ListCell
         cell.titleLabel.text = categorys?.filter("day == %@", day)[indexPath.row].index ?? "No Title"
-        cell.timeLabel.text = categorys?.filter("day == %@", day)[indexPath.row].hours ?? ""
+        cell.timeLabel.text = categorys?.filter("day == %@", day)[indexPath.row].cellIndicateDate ?? ""
         return cell
     }
     

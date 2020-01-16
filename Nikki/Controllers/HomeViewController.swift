@@ -23,10 +23,7 @@ class HomeViewController: UIViewController {
     var categorys: Results<Category>?
     
     // MARK: - UI Parts
-    // メニュー用ハンバーガーボタン
-    private var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +34,7 @@ class HomeViewController: UIViewController {
         // カスタムセルを設定
         tableView.registerCustomCell()
         // セルの縦幅
-        tableView.rowHeight = 120.0
-        
-        menuButtonPressed()
+        tableView.rowHeight = 100.0
     }
     // viewが画面に表示されてから呼ばれるメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -47,22 +42,15 @@ class HomeViewController: UIViewController {
         // 画面が表示される度にロードする
         loadCategories()
     }
+    
+    
     // MARK: - Data Manipulation Methods
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self).sorted(byKeyPath: "sort", ascending: false)
+        categorys = realm.objects(Category.self).sorted(byKeyPath: "cellIndicateDate", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
-    }
-    
-    // MARK: - Private Function
-    // サイドナビゲーションが閉じた状態から左隅のドラッグを行ってコンテンツを開く際の処理
-    @objc private func menuButtonPressed() {
-        if let parentViewController = self.parent {
-            let vc = parentViewController as! BaseViewController
-            vc.openSideNavigation()
-        }
     }
 }
 
@@ -90,7 +78,7 @@ extension HomeViewController: UITableViewDataSource {
         // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
         cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
         // 時刻を代入
-        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].hours ?? ""
+        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate ?? ""
         
         return cell
     }
