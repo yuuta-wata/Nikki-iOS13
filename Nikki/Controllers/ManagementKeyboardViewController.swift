@@ -9,12 +9,12 @@
 import UIKit
 
 class ManagementKeyboardViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-// MARK: - NSNotification Methods
+    // MARK: - NSNotification Methods
     // Viewが表示される直前に呼ばれるメソッド
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +37,7 @@ class ManagementKeyboardViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
     }
-
+    
     @objc func keyboardWillAppear(_ notification: Notification) {
         // CreateViewControllerでオーバーライドする
     }
@@ -45,18 +45,18 @@ class ManagementKeyboardViewController: UIViewController {
         // CreateViewControllerでオーバーライドする
     }
     
-// MARK: - UITapGesturRecognizer Methods
+    // MARK: - UITapGesturRecognizer Methods
     // Viewに認証させる
-    func setupView() {
+    private func setupView() {
         view.addGestureRecognizer(hideKeyboardViewTap())
     }
     // 画面をタップするとレスポンダーを破棄する
-    func hideKeyboardViewTap() -> UITapGestureRecognizer {
+    private func hideKeyboardViewTap() -> UITapGestureRecognizer {
         let tap = UITapGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
         // タップがキャンセルされないようにする
         tap.cancelsTouchesInView = false
         return tap
     }
     
-
+    
 }

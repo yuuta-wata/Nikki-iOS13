@@ -25,7 +25,6 @@
 		43E5052223A19269002050E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5052123A19269002050E8 /* Constants.swift */; };
 		43E5052423A1AB9B002050E8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5052323A1AB9B002050E8 /* CreateViewController.swift */; };
 		43F4DCE923A8470B00A06FA6 /* ManagementKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F4DCE823A8470B00A06FA6 /* ManagementKeyboardViewController.swift */; };
-		43FCD7E423AAB2F500E04F69 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCD7E323AAB2F500E04F69 /* Section.swift */; };
 		4DB29B5021678AFDFA4906EC /* Pods_Nikki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB33F838701A9D922A632F2 /* Pods_Nikki.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +50,6 @@
 		43E5052123A19269002050E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43E5052323A1AB9B002050E8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = Nikki/Controllers/CreateViewController.swift; sourceTree = SOURCE_ROOT; };
 		43F4DCE823A8470B00A06FA6 /* ManagementKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementKeyboardViewController.swift; sourceTree = "<group>"; };
-		43FCD7E323AAB2F500E04F69 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		7C37CB65152BED832F99C04C /* Pods-Nikki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nikki.debug.xcconfig"; path = "Target Support Files/Pods-Nikki/Pods-Nikki.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA6DB06F232C5222A327F50 /* Pods-Nikki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nikki.release.xcconfig"; path = "Target Support Files/Pods-Nikki/Pods-Nikki.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 		4378F34723B6236C007C61E4 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				43FCD7E323AAB2F500E04F69 /* Section.swift */,
 				43C6BF3A23A32C9E00D485F4 /* Category.swift */,
 				43C6BF3C23A32D6F00D485F4 /* Article.swift */,
 			);
@@ -286,7 +283,6 @@
 				43D710E823B9F36100A4AB3D /* DateItems.swift in Sources */,
 				43E5052423A1AB9B002050E8 /* CreateViewController.swift in Sources */,
 				43E5050F23A190EC002050E8 /* HomeViewController.swift in Sources */,
-				43FCD7E423AAB2F500E04F69 /* Section.swift in Sources */,
 				43E5050B23A190EC002050E8 /* AppDelegate.swift in Sources */,
 				43E5050D23A190EC002050E8 /* SceneDelegate.swift in Sources */,
 				43F4DCE923A8470B00A06FA6 /* ManagementKeyboardViewController.swift in Sources */,

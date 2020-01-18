@@ -11,11 +11,13 @@ import RealmSwift
 
 class ArticleViewController: ManagementKeyboardViewController {
     // MARK: - Properties
-    let realm = try! Realm()
+    
     // HomeViewControllerから渡されたCategoryデータを受け取る変数
     var selectedCategory = Category()
     
-    var texts = false
+    private let realm = try! Realm()
+    
+    private var texts = false
     // MARK: - UI Parts
     @IBOutlet weak var articleNavItem: UINavigationItem!
     @IBOutlet weak var diaryTitle: UITextField!
@@ -37,7 +39,7 @@ class ArticleViewController: ManagementKeyboardViewController {
         
     }
     // 受け取ったデータからリストを取得し、textに表示させる
-    func loadArticle() {
+    private func loadArticle() {
         diaryTitle.text = selectedCategory.articles.first?.title
         diaryContent.text = selectedCategory.articles.first?.content
     }
