@@ -62,7 +62,7 @@ class CreateViewController: ManagementKeyboardViewController {
         // キーボードの高さを求めるための型定義
         let keyboardHeight: CGFloat
         // iOS13以上ならキーボードの高さを差し引いたTextViewを表示する
-        if #available(iOS 13.0, *) {
+        if #available(iOS 12.0, *) {
             keyboardHeight = self.view.safeAreaInsets.bottom - keyboardFrame.cgRectValue.height
         } else {
             keyboardHeight = keyboardFrame.cgRectValue.height
@@ -87,8 +87,6 @@ class CreateViewController: ManagementKeyboardViewController {
         
         do {
             try realm.write {
-                // Sectionにデータを保存
-                realm.add(Section(area: sectionDate), update: .modified)
                 // Articleの各データを取得
                 let article = Article()
                 // Categoryの各データを取得
@@ -111,7 +109,7 @@ class CreateViewController: ManagementKeyboardViewController {
             print("Post error\(error)")
         }
         dismiss(animated: true, completion: nil)
-        print("投稿完了")
+//        print("投稿完了")
     }
     
 }

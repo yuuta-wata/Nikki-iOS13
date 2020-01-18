@@ -14,10 +14,10 @@ class HomeViewController: UIViewController {
     // Realmを取得
     let realm = try! Realm()
     // セクションに表示する日付を取得
-    let items = try! Realm().objects(Section.self).sorted(byKeyPath: "area", ascending: false)
-    // String型にキャスト
+    let items = try! Realm().objects(Category.self).sorted(byKeyPath: "date", ascending: false)
+    // String型にキャストし、降順にする
     var sectionNames: [String] {
-        return items.value(forKeyPath: "area") as! [String]
+        return Set(items.value(forKeyPath: "date") as! [String]).sorted(by: > )
     }
     // セルに表示するデータを取得
     var categorys: Results<Category>?
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
     // ロードメソッド
     func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self).sorted(byKeyPath: "cellIndicateDate", ascending: false)
+        categorys = realm.objects(Category.self)
         // テーブルビューをロード
         tableView.reloadData()
     }
@@ -68,17 +68,17 @@ extension HomeViewController: UITableViewDataSource {
     
     // セルを表示する行数を取得
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 取得した記事の日付と取得したセクションの日付が完全一致する数を取得し、何もなければ１とする
-        return categorys?.filter("date == %@", sectionNames[section]).count ?? 1
+        // 取得した記事の日付と取得したセクションの日付が完全一致する数を取得
+        return items.filter("date == %@", sectionNames[section]).count
     }
     // セルを作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するセルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ListCell
-        // セクションの日付毎に記事を表示させ、タイトルにデータがなければ"No Title"をセルテキストに代入
-        cell.titleLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index ?? "No Title"
+        // セルを降順で表示し、セクションの日付毎に記事を表示させる
+        cell.titleLabel.text = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index
         // 時刻を代入
-        cell.timeLabel.text = categorys?.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate ?? ""
+        cell.timeLabel.text = items.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate
         
         return cell
     }
@@ -119,7 +119,7 @@ extension HomeViewController: UITableViewDelegate {
                 }
             }
             tableView.reloadData()
-            print("削除")
+//            print("削除")
             success(true)
         }
         deleteAction.backgroundColor = .red
