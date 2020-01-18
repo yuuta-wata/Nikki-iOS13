@@ -12,15 +12,15 @@ import RealmSwift
 class HomeViewController: UIViewController {
     // MARK: - Properties
     // Realmを取得
-    let realm = try! Realm()
+    private let realm = try! Realm()
     // セクションに表示する日付を取得
-    let items = try! Realm().objects(Category.self).sorted(byKeyPath: "date", ascending: false)
+    private let items = try! Realm().objects(Category.self).sorted(byKeyPath: "date", ascending: false)
     // String型にキャストし、降順にする
-    var sectionNames: [String] {
+    private var sectionNames: [String] {
         return Set(items.value(forKeyPath: "date") as! [String]).sorted(by: > )
     }
     // セルに表示するデータを取得
-    var categorys: Results<Category>?
+    private var categorys: Results<Category>?
     
     // MARK: - UI Parts
     @IBOutlet weak var tableView: UITableView!
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Data Manipulation Methods
     // ロードメソッド
-    func loadCategories() {
+    private func loadCategories() {
         // Realmからデータをロード
         categorys = realm.objects(Category.self)
         // テーブルビューをロード
@@ -119,7 +119,7 @@ extension HomeViewController: UITableViewDelegate {
                 }
             }
             tableView.reloadData()
-//            print("削除")
+            //            print("削除")
             success(true)
         }
         deleteAction.backgroundColor = .red

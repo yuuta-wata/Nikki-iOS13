@@ -12,12 +12,12 @@ import RealmSwift
 class CreateViewController: ManagementKeyboardViewController {
     // MARK: - Properties
     // Realmを取得
-    let realm = try! Realm()
+    private let realm = try! Realm()
     // 日付を取得するための変数
-    var sectionDate = ""
-    var day = ""
-    var cellIndicateDate = ""
-    var dayOfWeek = ""
+    private var sectionDate = ""
+    private var day = ""
+    private var cellIndicateDate = ""
+    private var dayOfWeek = ""
     // MARK: - UI Parts
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
@@ -35,7 +35,7 @@ class CreateViewController: ManagementKeyboardViewController {
     }
     
     // 日付をロードする
-    func loadDate() {
+    private func loadDate() {
         // 日付フォーマットを初期化
         let jpDateFormate = DateFormatter()
         // 日付を日本表記にする
@@ -109,7 +109,7 @@ class CreateViewController: ManagementKeyboardViewController {
             print("Post error\(error)")
         }
         dismiss(animated: true, completion: nil)
-//        print("投稿完了")
+        //        print("投稿完了")
     }
     
 }

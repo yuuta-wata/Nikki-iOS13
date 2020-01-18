@@ -12,13 +12,13 @@ import FSCalendar
 
 class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     // MARK: - Properties
-    let realm = try! Realm()
-    var categorys: Results<Category>?
-    var day = ""
-    let dayOfWeek = ["日", "月", "火", "水", "木", "金", "土"]
-    var dayOfWeekCount = 0
-    var dayOfWeekColorCount = 0
-    var dayColorCount = 0
+    private let realm = try! Realm()
+    private var categorys: Results<Category>?
+    private var day = ""
+    private let dayOfWeek = ["日", "月", "火", "水", "木", "金", "土"]
+    private var dayOfWeekCount = 0
+    private var dayOfWeekColorCount = 0
+    private var dayColorCount = 0
     // MARK: - UI Parts
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
@@ -46,7 +46,7 @@ class CalendarViewController: UIViewController,FSCalendarDataSource, FSCalendarD
         loadCategories()
     }
     // ロードメソッド
-    func loadCategories() {
+    private func loadCategories() {
         // Realmからデータをロード
         categorys = realm.objects(Category.self).sorted(byKeyPath: "date", ascending: false)
         // テーブルビューをロード
