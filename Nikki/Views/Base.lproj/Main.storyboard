@@ -35,7 +35,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-HO-ox3">
-                                <rect key="frame" x="320" y="697" width="64" height="66"/>
+                                <rect key="frame" x="256" y="635" width="128" height="128"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <state key="normal" image="鉛筆アイコン"/>
@@ -155,7 +155,7 @@
             <objects>
                 <viewController id="CRR-6R-PKR" customClass="ArticleViewController" customModule="Nikki" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0J-Ya-VoA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-hm-ubh">
@@ -178,8 +178,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-Qt-s7V">
-                                <rect key="frame" x="0.0" y="89" width="414" height="807"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-Qt-s7V" userLabel="WrapperView">
+                                <rect key="frame" x="0.0" y="89" width="414" height="635"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcw-q3-IWL">
                                         <rect key="frame" x="25" y="20" width="364" height="22"/>
@@ -189,7 +189,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-pJ-jgf">
-                                        <rect key="frame" x="20" y="62" width="374" height="726"/>
+                                        <rect key="frame" x="20" y="62" width="374" height="554"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -222,11 +222,29 @@
                     <connections>
                         <outlet property="articleNavItem" destination="knA-4h-naQ" id="BMZ-rU-Glf"/>
                         <outlet property="diaryContent" destination="RAl-pJ-jgf" id="q51-Pz-prQ"/>
-                        <outlet property="diaryContentBottomConstraints" destination="OZZ-j4-MDb" id="aFR-kE-eys"/>
                         <outlet property="diaryTitle" destination="jcw-q3-IWL" id="fmQ-kz-SeP"/>
+                        <outlet property="toolBer" destination="vbi-cJ-pjs" id="Syx-Zs-FU4"/>
+                        <outlet property="wrapperViewBottomConstraints" destination="dRc-Tg-DjY" id="xvS-Iq-hmf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIt-rS-cbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vbi-cJ-pjs">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Item" image="photo" catalog="system" id="JMA-aI-7oI">
+                            <connections>
+                                <action selector="photoLibraryButtonPressed:" destination="CRR-6R-PKR" id="jYp-JK-h4b"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="p9L-2d-UWQ"/>
+                        <barButtonItem title="完了" id="bN4-7E-RZc">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="CRR-6R-PKR" id="43B-KY-fRh"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="2200" y="215.625"/>
         </scene>
@@ -260,7 +278,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-W1-BXH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-W1-BXH" userLabel="wrapperView">
                                 <rect key="frame" x="0.0" y="89" width="414" height="807"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-5x-gou">
@@ -311,7 +329,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q6Z-W1-BXH" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" id="ApA-xI-74A"/>
-                            <constraint firstAttribute="bottom" secondItem="q6Z-W1-BXH" secondAttribute="bottom" id="BUx-jE-JoZ"/>
+                            <constraint firstItem="q6Z-W1-BXH" firstAttribute="bottom" secondItem="UJs-Ka-04E" secondAttribute="bottom" id="BUx-jE-JoZ"/>
                             <constraint firstItem="2Pb-kv-kXf" firstAttribute="trailing" secondItem="1Y3-d5-uqJ" secondAttribute="trailing" id="XPb-J5-47k"/>
                             <constraint firstItem="q6Z-W1-BXH" firstAttribute="trailing" secondItem="2Pb-kv-kXf" secondAttribute="trailing" id="gty-qb-0uE"/>
                             <constraint firstItem="1Y3-d5-uqJ" firstAttribute="leading" secondItem="2Pb-kv-kXf" secondAttribute="leading" id="isl-OX-cn7"/>
@@ -323,12 +341,30 @@
                     <navigationItem key="navigationItem" id="E19-GR-KgU"/>
                     <connections>
                         <outlet property="contentTextView" destination="clf-kH-o0o" id="eLx-5k-O8s"/>
-                        <outlet property="contentTextViewBottomConstraints" destination="wzh-HL-F06" id="aHG-W7-a0s"/>
                         <outlet property="createViewNavItem" destination="2K9-r1-rBK" id="550-T7-giO"/>
                         <outlet property="titleTextField" destination="QQ6-MH-3Sc" id="HKq-AS-KKo"/>
+                        <outlet property="toolBar" destination="dje-jR-cjB" id="vS9-Vm-IzY"/>
+                        <outlet property="wrapperViewBottomConstraints" destination="BUx-jE-JoZ" id="S5A-ei-243"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QS4-fi-yii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dje-jR-cjB">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Item" image="photo" catalog="system" id="Sif-CC-nha">
+                            <connections>
+                                <action selector="photoLibraryButtonPressed:" destination="nyt-EM-5ht" id="4mk-dM-J3w"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4j0-AK-nnm"/>
+                        <barButtonItem title="完了" id="fOW-Jx-yNa">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="nyt-EM-5ht" id="f4O-TZ-mW8"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1298.5507246376812" y="-422.54464285714283"/>
         </scene>
@@ -387,9 +423,10 @@
     <resources>
         <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
         <image name="鉛筆アイコン" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qic-yN-O1q"/>
+        <segue reference="nPb-U3-S71"/>
     </inferredMetricsTieBreakers>
 </document>
