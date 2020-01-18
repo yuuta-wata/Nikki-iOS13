@@ -22,8 +22,9 @@ class CreateViewController: ManagementKeyboardViewController {
     @IBOutlet weak var createViewNavItem: UINavigationItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-    // contentTextFieldの底側の制約を取得
-    @IBOutlet weak var contentTextViewBottomConstraints: NSLayoutConstraint!
+    @IBOutlet var toolBar: UIToolbar!
+    // WrapperViewの底側の制約を取得
+    @IBOutlet weak var wrapperViewBottomConstraints: NSLayoutConstraint!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -32,6 +33,9 @@ class CreateViewController: ManagementKeyboardViewController {
         // 文字色を指定
         titleTextField.textColor = UIColor(code: "333333")
         contentTextView.textColor = UIColor(code: "333333")
+        // ツールバーを設定
+        titleTextField.inputAccessoryView = toolBar
+        contentTextView.inputAccessoryView = toolBar
     }
     
     // 日付をロードする
@@ -57,22 +61,23 @@ class CreateViewController: ManagementKeyboardViewController {
     override func keyboardWillAppear(_ notification: Notification) {
         // キーボードのサイズを取得
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-            return
+            fatalError("キーボードのサイズを取得できません")
         }
         // キーボードの高さを求めるための型定義
         let keyboardHeight: CGFloat
-        // iOS13以上ならキーボードの高さを差し引いたTextViewを表示する
+        // iOS12以上ならキーボードの高さを差し引いたTextViewを表示する
         if #available(iOS 12.0, *) {
-            keyboardHeight = self.view.safeAreaInsets.bottom - keyboardFrame.cgRectValue.height
+            keyboardHeight = self.view.safeAreaInsets.bottom - (keyboardFrame.cgRectValue.height + toolBar.frame.height)
         } else {
             keyboardHeight = keyboardFrame.cgRectValue.height
         }
-        contentTextViewBottomConstraints.constant = keyboardHeight
+        wrapperViewBottomConstraints.constant = keyboardHeight
     }
+
     // 画面を閉じる前に呼ばせる
     override func keyboardWillDisappear(_ notification: NSNotification?) {
-        // contentTextFieldの高さを元に戻す
-        contentTextViewBottomConstraints.constant = 0.0
+        // Viewの高さを元に戻す
+        wrapperViewBottomConstraints.constant = 0.0
     }
     
     // MARK: - Setting Button Items
@@ -80,8 +85,6 @@ class CreateViewController: ManagementKeyboardViewController {
     @IBAction func returnButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: - Add New Items
     // 記事投稿ボタン
     @IBAction func postButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -110,6 +113,19 @@ class CreateViewController: ManagementKeyboardViewController {
         }
         dismiss(animated: true, completion: nil)
         //        print("投稿完了")
+    }
+    // 完了ボタン
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        // キーボードを閉じる
+        titleTextField.endEditing(true)
+        contentTextView.endEditing(true)
+    }
+    // フォトライブラリボタン
+    @IBAction func photoLibraryButtonPressed(_ sender: UIBarButtonItem) {
+        // フォトライブラリを設定
+        imagePicker.sourceType = .photoLibrary
+        // フォトライブラリを呼ぶ
+        present(imagePicker, animated: true, completion: nil)
     }
     
 }

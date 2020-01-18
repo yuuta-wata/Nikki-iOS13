@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ManagementKeyboardViewController: UIViewController {
+class ManagementKeyboardViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        // デリゲートを設定
+        imagePicker.delegate = self
     }
     // MARK: - NSNotification Methods
     // Viewが表示される直前に呼ばれるメソッド
@@ -57,6 +61,4 @@ class ManagementKeyboardViewController: UIViewController {
         tap.cancelsTouchesInView = false
         return tap
     }
-    
-    
 }

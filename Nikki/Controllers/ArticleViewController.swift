@@ -22,8 +22,10 @@ class ArticleViewController: ManagementKeyboardViewController {
     @IBOutlet weak var articleNavItem: UINavigationItem!
     @IBOutlet weak var diaryTitle: UITextField!
     @IBOutlet weak var diaryContent: UITextView!
+    
+    @IBOutlet var toolBer: UIToolbar!
     // diaryContentの底側の制約を取得
-    @IBOutlet weak var diaryContentBottomConstraints: NSLayoutConstraint!
+    @IBOutlet weak var wrapperViewBottomConstraints: NSLayoutConstraint!
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class ArticleViewController: ManagementKeyboardViewController {
         diaryTitle.delegate = self
         // TextViewが選択されたら通知
         diaryContent.delegate = self
+        // ツールバーを追加
+        diaryTitle.inputAccessoryView = toolBer
+        diaryContent.inputAccessoryView = toolBer
         // 文字色を指定
         diaryTitle.textColor = UIColor(code: "333333")
         diaryContent.textColor = UIColor(code: "333333")
@@ -51,18 +56,18 @@ class ArticleViewController: ManagementKeyboardViewController {
         }
         // キーボードの高さを求めるための型定義
         let keyboardHeight: CGFloat
-        // iOS13以上ならキーボードの高さを差し引いたTextViewを表示する
-        if #available(iOS 13.0, *) {
-            keyboardHeight = self.view.safeAreaInsets.bottom - keyboardFrame.cgRectValue.height
+        // iOS12以上ならキーボードとツールバーの高さを差し引いたTextViewを表示する
+        if #available(iOS 12.0, *) {
+            keyboardHeight = self.view.safeAreaInsets.bottom - (keyboardFrame.cgRectValue.height + toolBer.frame.height)
         } else {
             keyboardHeight = keyboardFrame.cgRectValue.height
         }
-        diaryContentBottomConstraints.constant = keyboardHeight
+        wrapperViewBottomConstraints.constant = keyboardHeight
     }
     // 画面を閉じる前に呼ばせる
     override func keyboardWillDisappear(_ notification: NSNotification?) {
-        // diaryContentの高さを元に戻す
-        diaryContentBottomConstraints.constant = 0.0
+        // Viewの高さを元に戻す
+        wrapperViewBottomConstraints.constant = 0.0
     }
     
     // MARK: - Setting Button Items
@@ -96,6 +101,20 @@ class ArticleViewController: ManagementKeyboardViewController {
             sender.title = "編集"
             texts = false
         }
+    }
+    // 完了ボタン
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        // キーボードを閉じる
+        diaryTitle.endEditing(true)
+        diaryContent.endEditing(true)
+    }
+    
+    // フォトライブラリボタン
+    @IBAction func photoLibraryButtonPressed(_ sender: UIBarButtonItem) {
+        // フォトライブラリを設定
+        imagePicker.sourceType = .photoLibrary
+        // フォトライブラリを呼ぶ
+        present(imagePicker, animated: true, completion: nil)
     }
     
 }
