@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
     // ロードメソッド
     private func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self)
+        categorys = realm.objects(Category.self).sorted(byKeyPath: "cellIndicateDate", ascending: false)
         // テーブルビューをロード
         tableView.reloadData()
     }
@@ -78,7 +78,7 @@ extension HomeViewController: UITableViewDataSource {
         // セルを降順で表示し、セクションの日付毎に記事を表示させる
         cell.titleLabel.text = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index
         // 時刻を代入
-        cell.timeLabel.text = items.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate
+        cell.timeLabel.text = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate
         
         return cell
     }
