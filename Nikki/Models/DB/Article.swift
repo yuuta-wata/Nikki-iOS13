@@ -13,5 +13,5 @@ class Article: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var content: String = ""
     // 親を指定
-    var parentCategory = LinkingObjects(fromType: Category.self, property: "articles")
+    var parentDiaryList = LinkingObjects(fromType: DiaryList.self, property: "articles")
 }

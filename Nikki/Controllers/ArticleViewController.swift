@@ -12,8 +12,8 @@ import RealmSwift
 class ArticleViewController: ManagementKeyboardViewController {
     // MARK: - Properties
     
-    // HomeViewControllerから渡されたCategoryデータを受け取る変数
-    var selectedCategory = Category()
+    // HomeViewControllerから渡されたDiaryListデータを受け取る変数
+    var selectedDiaryLists = DiaryList()
     
     private let realm = try! Realm()
     
@@ -45,8 +45,8 @@ class ArticleViewController: ManagementKeyboardViewController {
     }
     // 受け取ったデータからリストを取得し、textに表示させる
     private func loadArticle() {
-        diaryTitle.text = selectedCategory.articles.first?.title
-        diaryContent.text = selectedCategory.articles.first?.content
+        diaryTitle.text = selectedDiaryLists.articles.first?.title
+        diaryContent.text = selectedDiaryLists.articles.first?.content
     }
     // 画面を表示させる前に呼ばせる
     override func keyboardWillAppear(_ notification: Notification) {
@@ -88,9 +88,9 @@ class ArticleViewController: ManagementKeyboardViewController {
             // 記事をアップデートする
             do {
                 try realm.write {
-                    selectedCategory.index = diaryTitle.text ?? "No Title"
-                    selectedCategory.articles.first?.title = diaryTitle.text ?? "No Title"
-                    selectedCategory.articles.first?.content = diaryContent.text ?? "No Content"
+                    selectedDiaryLists.index = diaryTitle.text ?? "No Title"
+                    selectedDiaryLists.articles.first?.title = diaryTitle.text ?? "No Title"
+                    selectedDiaryLists.articles.first?.content = diaryContent.text ?? "No Content"
                 }
             } catch {
                 print("アップデートエラー\(error)")
