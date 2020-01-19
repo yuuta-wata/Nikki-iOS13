@@ -117,6 +117,37 @@ class ArticleViewController: ManagementKeyboardViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    // 文章中に画像を挿入するメソッド
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // ユーザーが選択した物がUIImageにキャスト成功したら処理を実行
+        if let image = info[.originalImage] as? UIImage {
+            // 属性文字列を添付するためのテキスト添付オブジェクト
+            let attchment = NSTextAttachment()
+            // ユーザーが選択した画像をテキスト添付オブジェクトに代入
+            attchment.image = image
+            
+            // 画像の横幅を決める
+            let newImageWidth = (diaryContent.bounds.size.width - 50)
+            // 画像の縦幅を決める
+            let scale = newImageWidth / image.size.width
+            let newImageHeight = image.size.height * scale
+            
+            // リサイズ
+            attchment.bounds = CGRect.init(x: 0, y: 0, width: newImageWidth, height: newImageHeight)
+            // 属性文字列にリサイズした画像を追加
+            let attString = NSAttributedString(attachment: attchment)
+            // contentTextViewに挿入
+            diaryContent.textStorage.insert(attString, at: diaryContent.selectedRange.location)
+            // カーソルを末端に移動
+            let newPosition = diaryContent.endOfDocument
+            diaryContent.selectedTextRange = diaryContent.textRange(from: newPosition, to: newPosition)
+            // フォトライブラリを閉じる
+            picker.dismiss(animated: true, completion: nil)
+        } else {
+            print("UIImageにキャストできませんでした。")
+        }
+    }
+    
 }
 
 // MARK: - TextField Delegate Methods
