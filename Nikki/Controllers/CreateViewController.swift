@@ -73,7 +73,7 @@ class CreateViewController: ManagementKeyboardViewController {
         }
         wrapperViewBottomConstraints.constant = keyboardHeight
     }
-
+    
     // 画面を閉じる前に呼ばせる
     override func keyboardWillDisappear(_ notification: NSNotification?) {
         // Viewの高さを元に戻す
@@ -90,24 +90,25 @@ class CreateViewController: ManagementKeyboardViewController {
         
         do {
             try realm.write {
-                // Articleの各データを取得
+                
+                // Articleのインスタンスを作成
                 let article = Article()
-                // Categoryの各データを取得
-                let newArticle = Category().articles
                 // Articleに各データを代入
                 article.title = titleTextField.text ?? "No Title"
                 article.content = contentTextView.text ?? "No Content"
+                
+                // DiaryListの子データのインスタンスを作成
+                let newArticle = DiaryList().articles
                 // 代入したArticleデータをCategoryの子データに格納
                 newArticle.append(article)
                 // Categoryに各データを保存
-                realm.add(Category(date: sectionDate,
-                                   index: titleTextField.text ?? "No Title",
-                                   day: day,
-                                   cellIndicateDate: cellIndicateDate,
-                                   dayOfWeek: dayOfWeek,
-                                   articles: newArticle))
+                realm.add(DiaryList(date: sectionDate,
+                                    index: titleTextField.text ?? "No Title",
+                                    day: day,
+                                    cellIndicateDate: cellIndicateDate,
+                                    dayOfWeek: dayOfWeek,
+                                    articles: newArticle))
             }
-            
         } catch {
             print("Post error\(error)")
         }
@@ -126,6 +127,36 @@ class CreateViewController: ManagementKeyboardViewController {
         imagePicker.sourceType = .photoLibrary
         // フォトライブラリを呼ぶ
         present(imagePicker, animated: true, completion: nil)
+    }
+    // 文章中に画像を挿入するメソッド
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // ユーザーが選択した物がUIImageにキャスト成功したら処理を実行
+        if let image = info[.originalImage] as? UIImage {
+            // 属性文字列を添付するためのテキスト添付オブジェクト
+            let attchment = NSTextAttachment()
+            // ユーザーが選択した画像をテキスト添付オブジェクトに代入
+            attchment.image = image
+            
+            // 画像の横幅を決める
+            let newImageWidth = (contentTextView.bounds.size.width - 50)
+            // 画像の縦幅を決める
+            let scale = newImageWidth / image.size.width
+            let newImageHeight = image.size.height * scale
+            
+            // リサイズ
+            attchment.bounds = CGRect.init(x: 0, y: 0, width: newImageWidth, height: newImageHeight)
+            // 属性文字列にリサイズした画像を追加
+            let attString = NSAttributedString(attachment: attchment)
+            // contentTextViewに挿入
+            contentTextView.textStorage.insert(attString, at: contentTextView.selectedRange.location)
+            // カーソルを末端に移動
+            let newPosition = contentTextView.endOfDocument
+            contentTextView.selectedTextRange = contentTextView.textRange(from: newPosition, to: newPosition)
+            // フォトライブラリを閉じる
+            picker.dismiss(animated: true, completion: nil)
+        } else {
+            print("UIImageにキャストできませんでした。")
+        }
     }
     
 }

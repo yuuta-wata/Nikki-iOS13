@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 // TableViewのcellに関連するオブジェクト
-class Category: Object {
+class DiaryList: Object {
     @objc dynamic var date = ""
     @objc dynamic var index = ""
     @objc dynamic var day = ""

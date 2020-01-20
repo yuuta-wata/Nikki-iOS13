@@ -14,13 +14,13 @@ class HomeViewController: UIViewController {
     // Realmを取得
     private let realm = try! Realm()
     // セクションに表示する日付を取得
-    private let items = try! Realm().objects(Category.self).sorted(byKeyPath: "date", ascending: false)
+    private let items = try! Realm().objects(DiaryList.self).sorted(byKeyPath: "date", ascending: false)
     // String型にキャストし、降順にする
     private var sectionNames: [String] {
         return Set(items.value(forKeyPath: "date") as! [String]).sorted(by: > )
     }
     // セルに表示するデータを取得
-    private var categorys: Results<Category>?
+    private var diaryList: Results<DiaryList>?
     
     // MARK: - UI Parts
     @IBOutlet weak var tableView: UITableView!
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
     // ロードメソッド
     private func loadCategories() {
         // Realmからデータをロード
-        categorys = realm.objects(Category.self)
+        diaryList = realm.objects(DiaryList.self)
         // テーブルビューをロード
         tableView.reloadData()
     }
@@ -78,7 +78,7 @@ extension HomeViewController: UITableViewDataSource {
         // セルを降順で表示し、セクションの日付毎に記事を表示させる
         cell.titleLabel.text = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row].index
         // 時刻を代入
-        cell.timeLabel.text = items.filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate
+        cell.timeLabel.text = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row].cellIndicateDate
         
         return cell
     }
@@ -92,16 +92,16 @@ extension HomeViewController: UITableViewDelegate {
     // セルが選択されていることを通知する
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 選択したセルに指定した識別子でセグエを開始する
-        performSegue(withIdentifier: K.categoryCell, sender: self)
+        performSegue(withIdentifier: K.listCell, sender: self)
         // セルをタッチした時に選択解除のアニメーションを追加
         tableView.deselectRow(at: indexPath, animated: true)
     }
     // セグエ実行中の処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 遷移先がArticleViewControllerなら選択しているCategoryデータをselectedCategoryに渡す
+        // 遷移先がArticleViewControllerなら選択しているDiaryListデータをselectedDiaryListsに渡す
         if let vc = segue.destination as? ArticleViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
-                vc.selectedCategory = (categorys?[indexPath.row])!
+                vc.selectedDiaryLists = items.sorted(byKeyPath: "cellIndicateDate", ascending: false).filter("date == %@", sectionNames[indexPath.section])[indexPath.row]
             }
         }
     }
@@ -109,12 +109,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "削除") { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             // 選択したセルにデータが入っていれば削除する
-            if let categoryForDeletion = self.categorys?[indexPath.row] {
+            if let diaryListForDeletion = self.diaryList?[indexPath.row] {
                 do {
                     try! self.realm.write {
                         // 子データから削除する
-                        self.realm.delete(categoryForDeletion.articles)
-                        self.realm.delete(categoryForDeletion)
+                        self.realm.delete(diaryListForDeletion.articles)
+                        self.realm.delete(diaryListForDeletion)
                     }
                 }
             }
